@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flybrain"
+version = "0.1.0"
+description = "A language model whose internal wiring is the real Drosophila connectome, trained on AMD ROCm"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "pyarrow>=14",
+    "tokenizers>=0.15",
+    "requests>=2.31",
+    "tqdm>=4.66",
+    "fastapi>=0.110",
+    "uvicorn>=0.27",
+]
+
+[project.optional-dependencies]
+train = ["torch>=2.4"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+flybrain-train = "flybrain.train:main"
+flybrain-chat = "flybrain.cli:main"
+flybrain-serve = "flybrain.serve:main"
+flybrain-teacher = "flybrain.teacher_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::UserWarning",
+]

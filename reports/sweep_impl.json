@@ -1,0 +1,64 @@
+{
+  "index_add_float32_8": {
+    "ms": 10.173,
+    "gb_per_s": 118.0,
+    "pct_of_peak": 12.3
+  },
+  "index_add_float32_16": {
+    "ms": 20.998,
+    "gb_per_s": 112.0,
+    "pct_of_peak": 11.7
+  },
+  "index_add_float32_32": {
+    "ms": 41.121,
+    "gb_per_s": 113.3,
+    "pct_of_peak": 11.8
+  },
+  "csr_float32_8": {
+    "ms": 3.408,
+    "gb_per_s": 352.2,
+    "pct_of_peak": 36.7
+  },
+  "csr_float32_16": {
+    "ms": 6.392,
+    "gb_per_s": 368.1,
+    "pct_of_peak": 38.3
+  },
+  "csr_float32_32": {
+    "ms": 13.306,
+    "gb_per_s": 350.1,
+    "pct_of_peak": 36.5
+  },
+  "index_add_bfloat16_8": {
+    "ms": 12.213,
+    "gb_per_s": 98.3,
+    "pct_of_peak": 10.2
+  },
+  "index_add_bfloat16_16": {
+    "ms": 22.289,
+    "gb_per_s": 105.6,
+    "pct_of_peak": 11.0
+  },
+  "index_add_bfloat16_32": {
+    "ms": 42.376,
+    "gb_per_s": 109.9,
+    "pct_of_peak": 11.4
+  },
+  "csr_torch.bfloat16_8": {
+    "error": "CUDA error: function is not implemented when calling `hipsparseSpMM_bufferSize( handle, opA, opB, &alpha_, descA.descriptor(), descB.unsafe_mutable_descriptor(), &beta_, descC.descriptor(), compute_type, algorithm, &buffer_size )`"
+  },
+  "csr_torch.bfloat16_16": {
+    "error": "CUDA error: function is not implemented when calling `hipsparseSpMM_bufferSize( handle, opA, opB, &alpha_, descA.descriptor(), descB.unsafe_mutable_descriptor(), &beta_, descC.descriptor(), compute_type, algorithm, &buffer_size )`"
+  },
+  "csr_torch.bfloat16_32": {
+    "error": "CUDA error: function is not implemented when calling `hipsparseSpMM_bufferSize( handle, opA, opB, &alpha_, descA.descriptor(), descB.unsafe_mutable_descriptor(), &beta_, descC.descriptor(), compute_type, algorithm, &buffer_size )`"
+  },
+  "step_index_add": {
+    "forward_ms": 22.174,
+    "forward_backward_ms": 77.236
+  },
+  "step_csr": {
+    "forward_ms": 8.063,
+    "forward_backward_ms": 39.764
+  }
+}

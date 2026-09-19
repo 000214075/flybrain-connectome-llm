@@ -1,0 +1,19 @@
+{
+  "streams": 32,
+  "neurons": 164587,
+  "synapses": 25563096,
+  "ms_per_sweep_fwd_bwd_index_add": 83.0,
+  "ms_per_sweep_fwd_bwd_csr": 56.34,
+  "speedup_csr_vs_index_add": 1.473,
+  "out_max_abs_diff": 5.364418029785156e-07,
+  "out_rel_to_scale": 5.365e-07,
+  "out_elements_differing": 842937,
+  "out_elements": 5266784,
+  "out_scale": 0.9998379945755005,
+  "grad_max_abs_diff": 1.3113021850585938e-06,
+  "grad_rel_to_scale": 3.709e-07,
+  "grad_elements_differing": 114374,
+  "grad_elements": 164587,
+  "grad_scale": 3.5352814197540283,
+  "agree": true
+}

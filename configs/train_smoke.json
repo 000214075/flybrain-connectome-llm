@@ -1,0 +1,29 @@
+{
+  "run_name": "smoke",
+  "data_dir": "data/tokenized",
+  "tokenizer_path": "data/tokenized/tokenizer.json",
+  "out_dir": "checkpoints/smoke",
+  "build_pathway_from": "",
+  "model": {
+    "vocab_size": 16384,
+    "d_model": 128,
+    "n_layers": 2,
+    "n_heads": 4,
+    "context": 128,
+    "ffn_mode": "mb",
+    "mb_steps": 1,
+    "mb_kc_sparsity": 0.05,
+    "mb_spiking": true
+  },
+  "lr": 0.0006,
+  "batch_size": 8,
+  "grad_accum": 1,
+  "max_steps": 30,
+  "eval_interval": 15,
+  "eval_iters": 4,
+  "log_interval": 5,
+  "checkpoint_interval": 15,
+  "sample_interval": 15,
+  "dtype": "bf16",
+  "resume": "none"
+}

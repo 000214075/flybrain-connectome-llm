@@ -1,0 +1,32 @@
+{
+  "run_name": "flybrain-swiglu",
+  "data_dir": "data/tokenized",
+  "tokenizer_path": "data/tokenized/tokenizer.json",
+  "out_dir": "checkpoints/flybrain-swiglu",
+  "build_pathway_from": "",
+  "model": {
+    "vocab_size": 16384,
+    "d_model": 512,
+    "n_layers": 8,
+    "n_heads": 8,
+    "context": 512,
+    "ffn_mode": "swiglu",
+    "swiglu_mult": 4.0
+  },
+  "lr": 0.0006,
+  "min_lr_ratio": 0.1,
+  "weight_decay": 0.1,
+  "grad_clip": 1.0,
+  "warmup_steps": 200,
+  "batch_size": 16,
+  "grad_accum": 4,
+  "max_steps": 6000,
+  "eval_interval": 250,
+  "eval_iters": 40,
+  "log_interval": 20,
+  "checkpoint_interval": 500,
+  "sample_interval": 500,
+  "sample_prompt": "苍蝇的大脑",
+  "dtype": "bf16",
+  "resume": "auto"
+}

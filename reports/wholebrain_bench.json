@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "n_neurons": 164587,
+    "nnz": 25563096,
+    "excitatory": 106791,
+    "inhibitory": 57255,
+    "modulatory": 541,
+    "source": "malecns-v1.0"
+  },
+  "sweep": {
+    "streams4_chunk2000000": {
+      "ms": 4.92,
+      "gb_per_s": 252.6,
+      "pct_of_peak_bandwidth": 26.3
+    },
+    "streams4_chunk8000000": {
+      "ms": 5.867,
+      "gb_per_s": 211.8,
+      "pct_of_peak_bandwidth": 22.1
+    },
+    "streams8_chunk2000000": {
+      "ms": 10.053,
+      "gb_per_s": 237.8,
+      "pct_of_peak_bandwidth": 24.8
+    },
+    "streams8_chunk8000000": {
+      "ms": 10.974,
+      "gb_per_s": 217.8,
+      "pct_of_peak_bandwidth": 22.7
+    },
+    "streams16_chunk2000000": {
+      "ms": 19.763,
+      "gb_per_s": 237.1,
+      "pct_of_peak_bandwidth": 24.7
+    },
+    "streams16_chunk8000000": {
+      "ms": 20.846,
+      "gb_per_s": 224.8,
+      "pct_of_peak_bandwidth": 23.4
+    },
+    "streams32_chunk2000000": {
+      "ms": 39.008,
+      "gb_per_s": 237.8,
+      "pct_of_peak_bandwidth": 24.8
+    },
+    "streams32_chunk8000000": {
+      "ms": 40.531,
+      "gb_per_s": 228.9,
+      "pct_of_peak_bandwidth": 23.8
+    },
+    "streams64_chunk2000000": {
+      "ms": 78.165,
+      "gb_per_s": 236.1,
+      "pct_of_peak_bandwidth": 24.6
+    },
+    "streams64_chunk8000000": {
+      "ms": 80.279,
+      "gb_per_s": 229.9,
+      "pct_of_peak_bandwidth": 24.0
+    }
+  },
+  "step": {
+    "streams8": {
+      "forward_ms": 12.933,
+      "forward_backward_ms": 49.943
+    },
+    "streams16": {
+      "forward_ms": 23.196,
+      "forward_backward_ms": 81.604
+    },
+    "streams32": {
+      "forward_ms": 43.045,
+      "forward_backward_ms": 145.005
+    }
+  },
+  "train_step": {},
+  "sparse_mm": {
+    "streams16": {
+      "ms": 5.913
+    }
+  }
+}

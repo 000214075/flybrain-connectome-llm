@@ -1,0 +1,11 @@
+{
+  "checkpoint": "I:\\flybrain-bio\\biospike-outonly\\best.pt",
+  "checkpoint_step": 450,
+  "tokens": "data\\tokenized_domain\\val.bin",
+  "context": 32,
+  "batches": 24,
+  "batch": 8,
+  "val_loss": 6.2474,
+  "val_ppl": 516.644,
+  "seconds": 4.6
+}

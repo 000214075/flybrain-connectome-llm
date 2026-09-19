@@ -1,0 +1,18 @@
+{
+  "float32_16": {
+    "ms": 8.191,
+    "gb_per_s": 198.8,
+    "pct_of_peak": 20.7
+  },
+  "float32_32": {
+    "ms": 14.811,
+    "gb_per_s": 213.5,
+    "pct_of_peak": 22.2
+  },
+  "float16_16": {
+    "error": "CUDA error: function is not implemented when calling `hipsparseSpMM_bufferSize( handle, opA, opB, &alpha_, descA.descriptor(), descB.unsafe_mutable_descriptor(), &beta_, descC.descriptor(), compute_ty"
+  },
+  "float16_32": {
+    "error": "CUDA error: function is not implemented when calling `hipsparseSpMM_bufferSize( handle, opA, opB, &alpha_, descA.descriptor(), descB.unsafe_mutable_descriptor(), &beta_, descC.descriptor(), compute_ty"
+  }
+}

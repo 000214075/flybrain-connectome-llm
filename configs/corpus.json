@@ -1,0 +1,14 @@
+{
+  "corpus/wiki_zh/train-00002-of-00006.parquet": {
+    "url": "https://hf-mirror.com/datasets/wikimedia/wikipedia/resolve/main/20231101.zh/train-00002-of-00006.parquet",
+    "size": 126796358
+  },
+  "corpus/wiki_zh/train-00005-of-00006.parquet": {
+    "url": "https://hf-mirror.com/datasets/wikimedia/wikipedia/resolve/main/20231101.zh/train-00005-of-00006.parquet",
+    "size": 224856014
+  },
+  "corpus/tinystories/TinyStories-train.txt": {
+    "url": "https://hf-mirror.com/datasets/roneneldan/TinyStories/resolve/main/TinyStories-train.txt",
+    "max_bytes": 125829120
+  }
+}

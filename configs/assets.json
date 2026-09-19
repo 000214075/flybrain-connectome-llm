@@ -1,0 +1,21 @@
+{
+  "connectome/malecns/connectome-weights-male-cns-v1.0-minconf-0.5-traced-only.feather": {
+    "url": "https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connectome/connectome-weights-male-cns-v1.0-minconf-0.5-traced-only.feather",
+    "size": 508025642
+  },
+  "connectome/malecns/body-neurotransmitters-male-cns-v1.0.feather": {
+    "url": "https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connectome/body-neurotransmitters-male-cns-v1.0.feather",
+    "size": 43282834
+  },
+  "connectome/malecns/body-annotations-male-cns-v1.0-minconf-0.5.feather": {
+    "url": "https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connectome/body-annotations-male-cns-v1.0-minconf-0.5.feather",
+    "size": 14483314
+  },
+  "connectome/flywire/2025_Connectivity_783.parquet": {
+    "url": "https://raw.githubusercontent.com/eonsystemspbc/fly-brain/main/data/2025_Connectivity_783.parquet",
+    "size": 100804642
+  },
+  "connectome/flywire/Supplemental_file1_neuron_annotations.tsv": {
+    "url": "https://raw.githubusercontent.com/flyconnectome/flywire_annotations/main/supplemental_files/Supplemental_file1_neuron_annotations.tsv"
+  }
+}

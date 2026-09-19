@@ -1,0 +1,22 @@
+[
+  {
+    "case": "no brain, compile=False",
+    "seconds_per_step": 0.2499,
+    "tokens_per_second": 16389.8,
+    "reserved_gb": 4.53
+  },
+  {
+    "case": "no brain, compile=True",
+    "error": "InductorError: LoweringException: ModuleNotFoundError: No module named 'triton'\n  target: aten.mm.default\n  args[0]: TensorBox(\n    ReinterpretView(\n      StorageBox(\n        ComputedBuffer(name='buf3', layout=FixedLayout('cuda:0', torch.bfloat16, size=[8, 512, 512], stride=[262144, 512, 1]), data=Pointwise(device"
+  },
+  {
+    "case": "brain, compile=False",
+    "seconds_per_step": 1.487,
+    "tokens_per_second": 2754.5,
+    "reserved_gb": 9.59
+  },
+  {
+    "case": "brain, compile=True",
+    "error": "InductorError: LoweringException: ModuleNotFoundError: No module named 'triton'\n  target: aten.mm.default\n  args[0]: TensorBox(\n    ReinterpretView(\n      StorageBox(\n        ComputedBuffer(name='buf3', layout=FixedLayout('cuda:0', torch.bfloat16, size=[8, 512, 512], stride=[262144, 512, 1]), data=Pointwise(device"
+  }
+]

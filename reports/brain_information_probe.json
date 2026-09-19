@@ -1,0 +1,222 @@
+[
+  {
+    "drive_mult": 0.5,
+    "gain_mult": 0.25,
+    "drive_scale": 1.1461,
+    "release_gain": 0.501,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.79,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 0.5,
+    "gain_mult": 0.5,
+    "drive_scale": 1.1461,
+    "release_gain": 0.596,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.79,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 0.5,
+    "gain_mult": 1.0,
+    "drive_scale": 1.1461,
+    "release_gain": 1.192,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.79,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 0.5,
+    "gain_mult": 2.0,
+    "drive_scale": 1.1461,
+    "release_gain": 2.384,
+    "firing": 0.1077,
+    "synapse_use": 0.1133,
+    "drive_participation": 3.81,
+    "readout_participation": 4.74,
+    "batch": 8
+  },
+  {
+    "drive_mult": 1.0,
+    "gain_mult": 0.25,
+    "drive_scale": 2.2923,
+    "release_gain": 0.501,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.8,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 1.0,
+    "gain_mult": 0.5,
+    "drive_scale": 2.2923,
+    "release_gain": 0.596,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.8,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 1.0,
+    "gain_mult": 1.0,
+    "drive_scale": 2.2923,
+    "release_gain": 1.192,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.8,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 1.0,
+    "gain_mult": 2.0,
+    "drive_scale": 2.2923,
+    "release_gain": 2.384,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.79,
+    "readout_participation": 2.45,
+    "batch": 8
+  },
+  {
+    "drive_mult": 2.0,
+    "gain_mult": 0.25,
+    "drive_scale": 4.5845,
+    "release_gain": 0.501,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.79,
+    "readout_participation": 2.58,
+    "batch": 8
+  },
+  {
+    "drive_mult": 2.0,
+    "gain_mult": 0.5,
+    "drive_scale": 4.5845,
+    "release_gain": 0.596,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.8,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 2.0,
+    "gain_mult": 1.0,
+    "drive_scale": 4.5845,
+    "release_gain": 1.192,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.8,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 2.0,
+    "gain_mult": 2.0,
+    "drive_scale": 4.5845,
+    "release_gain": 2.384,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.8,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 4.0,
+    "gain_mult": 0.25,
+    "drive_scale": 9.1691,
+    "release_gain": 0.501,
+    "firing": 0.1067,
+    "synapse_use": 0.1129,
+    "drive_participation": 3.79,
+    "readout_participation": 2.37,
+    "batch": 8
+  },
+  {
+    "drive_mult": 4.0,
+    "gain_mult": 0.5,
+    "drive_scale": 9.1691,
+    "release_gain": 0.596,
+    "firing": 0.1067,
+    "synapse_use": 0.1129,
+    "drive_participation": 3.79,
+    "readout_participation": 1.92,
+    "batch": 8
+  },
+  {
+    "drive_mult": 4.0,
+    "gain_mult": 1.0,
+    "drive_scale": 9.1691,
+    "release_gain": 1.192,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.78,
+    "readout_participation": 3.25,
+    "batch": 8
+  },
+  {
+    "drive_mult": 4.0,
+    "gain_mult": 2.0,
+    "drive_scale": 9.1691,
+    "release_gain": 2.384,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.79,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 8.0,
+    "gain_mult": 0.25,
+    "drive_scale": 18.3381,
+    "release_gain": 0.501,
+    "firing": 0.1068,
+    "synapse_use": 0.1129,
+    "drive_participation": 3.78,
+    "readout_participation": 4.11,
+    "batch": 8
+  },
+  {
+    "drive_mult": 8.0,
+    "gain_mult": 0.5,
+    "drive_scale": 18.3381,
+    "release_gain": 0.596,
+    "firing": 0.1068,
+    "synapse_use": 0.1129,
+    "drive_participation": 3.79,
+    "readout_participation": 3.46,
+    "batch": 8
+  },
+  {
+    "drive_mult": 8.0,
+    "gain_mult": 1.0,
+    "drive_scale": 18.3381,
+    "release_gain": 1.192,
+    "firing": 0.1067,
+    "synapse_use": 0.1129,
+    "drive_participation": 3.79,
+    "readout_participation": 2.45,
+    "batch": 8
+  },
+  {
+    "drive_mult": 8.0,
+    "gain_mult": 2.0,
+    "drive_scale": 18.3381,
+    "release_gain": 2.384,
+    "firing": 0.1067,
+    "synapse_use": 0.1128,
+    "drive_participation": 3.79,
+    "readout_participation": 2.32,
+    "batch": 8
+  }
+]

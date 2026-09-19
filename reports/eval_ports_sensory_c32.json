@@ -1,0 +1,10 @@
+{
+  "checkpoint": "checkpoints\\ports_sensory\\best.pt",
+  "tokens": "data\\tokenized_domain\\val.bin",
+  "context": 32,
+  "batches": 24,
+  "batch": 8,
+  "val_loss": 5.6194,
+  "val_ppl": 275.724,
+  "seconds": 4.8
+}

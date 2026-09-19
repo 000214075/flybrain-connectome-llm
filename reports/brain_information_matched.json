@@ -1,0 +1,57 @@
+[
+  {
+    "drive_mult": 0.25,
+    "gain_mult": 1.0,
+    "drive_scale": 2.2923,
+    "release_gain": 1.192,
+    "firing": 0.0,
+    "synapse_use": 0.0,
+    "drive_participation": 3.32,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 0.5,
+    "gain_mult": 1.0,
+    "drive_scale": 2.2923,
+    "release_gain": 1.192,
+    "firing": 0.0,
+    "synapse_use": 0.0,
+    "drive_participation": 3.32,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 1.0,
+    "gain_mult": 1.0,
+    "drive_scale": 2.2923,
+    "release_gain": 1.192,
+    "firing": 0.0,
+    "synapse_use": 0.0,
+    "drive_participation": 3.32,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 2.0,
+    "gain_mult": 1.0,
+    "drive_scale": 2.2923,
+    "release_gain": 1.192,
+    "firing": 0.0,
+    "synapse_use": 0.0,
+    "drive_participation": 3.32,
+    "readout_participation": 1.0,
+    "batch": 8
+  },
+  {
+    "drive_mult": 4.0,
+    "gain_mult": 1.0,
+    "drive_scale": 2.2923,
+    "release_gain": 1.192,
+    "firing": 0.0,
+    "synapse_use": 0.0,
+    "drive_participation": 3.32,
+    "readout_participation": 1.0,
+    "batch": 8
+  }
+]

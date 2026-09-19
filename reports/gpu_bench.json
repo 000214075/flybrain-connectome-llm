@@ -1,0 +1,73 @@
+{
+  "device": {
+    "torch": "2.9.1+rocm7.10.0a20251120",
+    "hip": "7.2.0-c0adf921a0",
+    "cuda": null,
+    "device_count": 1,
+    "is_rocm": true,
+    "name": "AMD Radeon RX 7900 XTX",
+    "gcn_arch": "gfx1100",
+    "total_memory_gb": 23.98,
+    "multi_processor_count": 48,
+    "bf16_supported": true,
+    "sdpa_backends": {
+      "FLASH_ATTENTION": false,
+      "EFFICIENT_ATTENTION": false,
+      "MATH": true,
+      "CUDNN_ATTENTION": false
+    }
+  },
+  "matmul": {
+    "bfloat16": {
+      "4096x4096": {
+        "seconds": 0.001779499999975087,
+        "tflops": 77.23
+      }
+    },
+    "float16": {
+      "4096x4096": {
+        "seconds": 0.0018577799999548005,
+        "tflops": 73.98
+      }
+    },
+    "float32": {
+      "4096x4096": {
+        "seconds": 0.04604416000001947,
+        "tflops": 2.98
+      }
+    }
+  },
+  "sdpa": {
+    "bfloat16": {
+      "seconds": 0.002062320000004547,
+      "seq": 512,
+      "heads": 8,
+      "head_dim": 64
+    },
+    "float16": {
+      "seconds": 0.0019228000000111934,
+      "seq": 512,
+      "heads": 8,
+      "head_dim": 64
+    }
+  },
+  "train": [
+    {
+      "ffn_mode": "mb",
+      "dtype": "bf16",
+      "params": 17927440,
+      "seconds_per_step": 0.2683,
+      "tokens_per_second": 30536.3,
+      "peak_vram_gb": 8.99
+    },
+    {
+      "ffn_mode": "swiglu",
+      "dtype": "bf16",
+      "params": 33559040,
+      "seconds_per_step": 0.135,
+      "tokens_per_second": 60685.1,
+      "peak_vram_gb": 5.29
+    }
+  ],
+  "memory_after": "vram free 14.03 GiB / total 23.98 GiB, torch allocated 0.15 GiB"
+}

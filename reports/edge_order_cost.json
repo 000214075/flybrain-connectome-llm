@@ -1,0 +1,26 @@
+{
+  "real.index_add": {
+    "forward_ms": 37.76,
+    "forward_backward_ms": 132.63
+  },
+  "real.csr": {
+    "forward_ms": 11.96,
+    "forward_backward_ms": 67.98
+  },
+  "shuffled.index_add": {
+    "forward_ms": 39.13,
+    "forward_backward_ms": 135.9
+  },
+  "shuffled.csr": {
+    "forward_ms": 13.18,
+    "forward_backward_ms": 71.68
+  },
+  "shuffled-resorted.index_add": {
+    "forward_ms": 38.21,
+    "forward_backward_ms": 135.37
+  },
+  "shuffled-resorted.csr": {
+    "forward_ms": 13.33,
+    "forward_backward_ms": 70.79
+  }
+}

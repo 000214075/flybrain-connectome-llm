@@ -1,0 +1,10 @@
+{
+  "samples": 15,
+  "engines": {
+    "compute 0": {
+      "mean_pct": 86.04,
+      "max_pct": 99.59,
+      "p50_pct": 87.33
+    }
+  }
+}

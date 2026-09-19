@@ -1,0 +1,10 @@
+{
+  "checkpoint": "checkpoints\\flybrain-domv2\\best.pt",
+  "tokens": "data/tokenized_domain/val.bin",
+  "context": 512,
+  "batches": 60,
+  "batch": 8,
+  "val_loss": 2.6885,
+  "val_ppl": 14.71,
+  "seconds": 5.0
+}

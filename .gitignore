@@ -1,0 +1,30 @@
+# ---- Python / tooling ----
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# ---- trained checkpoints ----
+# Weights are published as GitHub Release assets (see README "Weights"),
+# never committed: a single best.pt is 0.6-2.4 GB.
+checkpoints/
+*.pt
+
+# ---- third-party connectome datasets ----
+# MaleCNS (Janelia) and FlyWire raw files are NOT redistributed here.
+# Fetch them yourself with scripts/download.py.
+data/connectome/
+
+# ---- derived binaries, rebuild with the scripts in scripts/ ----
+data/corpus/
+data/corpus_domain/*.jsonl
+data/tokenized/
+data/tokenized_domain/*.bin
+data/wholebrain*.npz
+
+# ---- run logs and scratch ----
+*.log
+reports/*.lock

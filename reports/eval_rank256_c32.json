@@ -1,0 +1,10 @@
+{
+  "checkpoint": "C:\\Users\\heyiy\\Desktop\\cangying\\checkpoints\\flybrain-connectome-rank256\\best.pt",
+  "tokens": "data\\tokenized_domain\\val.bin",
+  "context": 32,
+  "batches": 24,
+  "batch": 8,
+  "val_loss": 5.3059,
+  "val_ppl": 201.528,
+  "seconds": 4.9
+}

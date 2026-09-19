@@ -1,0 +1,25 @@
+{
+  "samples": 41,
+  "engines": {
+    "3d": {
+      "mean_pct": 0.39,
+      "max_pct": 6.49,
+      "p50_pct": 0.2
+    },
+    "compute 0": {
+      "mean_pct": 85.02,
+      "max_pct": 96.78,
+      "p50_pct": 86.41
+    },
+    "copy": {
+      "mean_pct": 0.21,
+      "max_pct": 4.09,
+      "p50_pct": 0.07
+    },
+    "video codec engine": {
+      "mean_pct": 0.61,
+      "max_pct": 2.02,
+      "p50_pct": 0.31
+    }
+  }
+}

@@ -1,0 +1,56 @@
+# SearXNG configuration for the local search MCP.
+#
+# Why this exists: the previous search path scraped Bing directly, and on this
+# network it intermittently returned generic pages for specific queries while
+# still reporting success. SearXNG runs on this machine, needs no API key and no
+# account, and spreads a query over several engines so one blocked engine does
+# not silently poison the whole result set.
+use_default_settings: true
+
+server:
+  secret_key: "cangying-local-searxng-1a0a884-6b5a-7ba2-9c7e-33e9b290fa10"
+  # Off, because this instance is reachable only from localhost. The limiter is
+  # for public instances and would otherwise rate-limit our own calls.
+  limiter: false
+  public_instance: false
+  image_proxy: false
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  # `json` is what the MCP server consumes; it is off in the upstream defaults.
+  formats:
+    - html
+    - json
+
+ui:
+  static_use_hash: true
+
+outgoing:
+  request_timeout: 8.0
+  max_request_timeout: 12.0
+  pool_connections: 100
+  pool_maxsize: 20
+  enable_http2: false
+
+# Engines that do not answer on this network are disabled explicitly rather than
+# left to time out on every query. Bing answers here and is the default.
+engines:
+  - name: duckduckgo
+    disabled: true
+  - name: brave
+    disabled: true
+  - name: startpage
+    disabled: true
+  - name: baidu
+    disabled: true
+  - name: sogou
+    disabled: true
+  - name: qwant
+    disabled: true
+  - name: mojeek
+    disabled: true
+  - name: wikidata
+    disabled: true
+  - name: google
+    disabled: true

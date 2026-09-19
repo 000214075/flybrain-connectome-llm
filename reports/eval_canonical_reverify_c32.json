@@ -1,0 +1,11 @@
+{
+  "checkpoint": "checkpoints\\flybrain-connectome\\best.pt",
+  "checkpoint_step": 16800,
+  "tokens": "data\\tokenized_domain\\val.bin",
+  "context": 32,
+  "batches": 24,
+  "batch": 8,
+  "val_loss": 3.6349,
+  "val_ppl": 37.9,
+  "seconds": 4.9
+}

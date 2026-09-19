@@ -1,0 +1,10 @@
+﻿steps: a=13 b=13 compared=13
+  tokens_per_second: a=862.3 b=872.2 (+1.1%)
+  wall: a=1789787083.5 b=1789787187.6 (+0.0%)
+  vram_gb: a=8.7 b=8.7 (+0.0%)
+DIFFER at 6 place(s); first:
+  step 35 loss: 8.0824 vs 8.0662
+  step 40 loss: 7.9194 vs 7.8587
+  step 45 loss: 7.8395 vs 7.651
+  step 50 loss: 7.6517 vs 7.5974
+  step 55 loss: 7.4351 vs 7.3871

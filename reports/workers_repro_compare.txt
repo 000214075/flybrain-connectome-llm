@@ -1,0 +1,5 @@
+﻿steps: a=13 b=13 compared=13
+  tokens_per_second: a=862.3 b=865.5 (+0.4%)
+  wall: a=1789787083.5 b=1789787467.2 (+0.0%)
+  vram_gb: a=8.7 b=8.7 (+0.0%)
+IDENTICAL on every compared step

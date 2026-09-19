@@ -1,0 +1,78 @@
+[
+  {
+    "ffn_mode": "mb",
+    "config": {
+      "mb_steps": 1,
+      "mb_kc_sparsity": 0.05
+    },
+    "params": 20050192,
+    "seconds_per_step": 0.2194,
+    "tokens_per_second": 37342.9,
+    "peak_vram_gb": 7.18,
+    "minutes_per_100m_tokens": 44.63,
+    "tokens_per_optimizer_step_at_accum4": 32768
+  },
+  {
+    "ffn_mode": "mb",
+    "config": {
+      "mb_steps": 2,
+      "mb_kc_sparsity": 0.05
+    },
+    "params": 20050192,
+    "seconds_per_step": 0.3157,
+    "tokens_per_second": 25946.7,
+    "peak_vram_gb": 11.17,
+    "minutes_per_100m_tokens": 64.23,
+    "tokens_per_optimizer_step_at_accum4": 32768
+  },
+  {
+    "ffn_mode": "mb",
+    "config": {
+      "mb_steps": 1,
+      "mb_kc_sparsity": 0.1
+    },
+    "params": 20050192,
+    "seconds_per_step": 0.2199,
+    "tokens_per_second": 37254.7,
+    "peak_vram_gb": 7.17,
+    "minutes_per_100m_tokens": 44.74,
+    "tokens_per_optimizer_step_at_accum4": 32768
+  },
+  {
+    "ffn_mode": "mb-shuffled",
+    "config": {
+      "mb_steps": 1,
+      "mb_kc_sparsity": 0.05
+    },
+    "params": 20050192,
+    "seconds_per_step": 0.2198,
+    "tokens_per_second": 37264.1,
+    "peak_vram_gb": 7.17,
+    "minutes_per_100m_tokens": 44.73,
+    "tokens_per_optimizer_step_at_accum4": 32768
+  },
+  {
+    "ffn_mode": "swiglu",
+    "config": {
+      "ffn_hidden": 1024
+    },
+    "params": 29368832,
+    "seconds_per_step": 0.0586,
+    "tokens_per_second": 139871.0,
+    "peak_vram_gb": 3.95,
+    "minutes_per_100m_tokens": 11.92,
+    "tokens_per_optimizer_step_at_accum4": 32768
+  },
+  {
+    "ffn_mode": "swiglu",
+    "config": {
+      "ffn_hidden": 512
+    },
+    "params": 23077376,
+    "seconds_per_step": 0.0533,
+    "tokens_per_second": 153662.7,
+    "peak_vram_gb": 3.62,
+    "minutes_per_100m_tokens": 10.85,
+    "tokens_per_optimizer_step_at_accum4": 32768
+  }
+]
