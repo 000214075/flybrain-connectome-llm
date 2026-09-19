@@ -1,0 +1,4 @@
+17:30:55 run start ranks=128,256,512 configs=configs\train_biospike-nomask.json,configs\train_biospike-sensory.json,configs\train_biospike-random.json pid=17884 log=C:\Users\heyiy\Desktop\cangying\reports\rank_sweep-20260919-173055.log
+17:30:55 === train_biospike-random.json MISSING CONFIG C:\Users\heyiy\Desktop\cangying\configs\train_biospike-nomask.json,configs\train_biospike-sensory.json,configs\train_biospike-random.json (skipping) ===
+17:30:55 run finished; fixed 24-batch results:
+17:30:55 SUMMARY : no eval json

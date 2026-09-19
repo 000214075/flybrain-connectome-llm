@@ -1,0 +1,3 @@
+﻿[2026-09-19 16:29:59] watching for the training arm to stop (checkpoint: E:\flybrain-connectome\rank512-long\best.pt)
+[2026-09-19 17:14:24] no flybrain.train process left; waiting 25 s for any attached driver
+[2026-09-19 17:14:49] SKIP: C:\Users\heyiy\Desktop\cangying\reports\eval_flybrain-connectome-rank512-long_c32.json was written 32.7 s ago (a driver already evaluated it)

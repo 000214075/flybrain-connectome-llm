@@ -1,0 +1,10 @@
+[2026/09/19 ÖÜÁù  3:34:05.03] watcher launcher starting 
+2026-09-19 03:34:05 watchdog start  config=C:\Users\heyiy\Desktop\cangying\configs\train_connectome_long2.json  max_restarts=50
+2026-09-19 03:34:05 launch attempt 0 -> reports\watchdog-run-20260919-033405-0.log
+2026-09-19 09:04:55 attempt 0 ended: exit= elapsed=19851s done=True reason=run reported its summary
+2026-09-19 09:04:55 run completed; watchdog exiting
+[2026/09/19 ÖÜÁù  9:04:55.80] watcher launcher exited with 0 
+[2026/09/19 ÖÜÁù  9:27:03.48] watcher launcher starting 
+2026-09-19 09:27:03 watchdog start  config=C:\Users\heyiy\Desktop\cangying\configs\train_connectome_long2.json  max_restarts=50
+2026-09-19 09:27:03 launch attempt 0 -> reports\watchdog-run-20260919-092703-0.log
+^C

@@ -1,0 +1,4 @@
+serving on http://127.0.0.1:8014
+INFO:     127.0.0.1:54405 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54406 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54407 - "POST /api/chat HTTP/1.1" 200 OK

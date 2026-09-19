@@ -27,5 +27,6 @@ data/wholebrain*.npz
 
 # ---- run logs and scratch ----
 *.log
+!logs/*.log
 reports/*.lock
 autoloop/DISABLE

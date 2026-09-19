@@ -1,0 +1,4 @@
+serving on http://127.0.0.1:8011
+INFO:     127.0.0.1:55598 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55599 - "POST /api/chat HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:55600 - "POST /api/chat HTTP/1.1" 200 OK

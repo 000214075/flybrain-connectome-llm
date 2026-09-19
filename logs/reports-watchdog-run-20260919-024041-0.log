@@ -1,0 +1,30 @@
+  TORCH_BLAS_PREFER_HIPBLASLT=1
+  TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1
+  HIPBLASLT_ALLOW_TF32=1
+  MIOPEN_FIND_MODE=FAST
+whole brain: 164,587 neurons, 25,563,096 synapses (106,791 excitatory / 57,255 inhibitory), 1 chunks x 1 sweeps per pass, rank 256, one sweep per token, the whole sequence model, impl=csr-scaled
+resumed from checkpoints/flybrain-connectome-long2\last.pt at step 200 (best val 6.2306)
+{
+  "torch": "2.9.1+rocm7.10.0a20251120",
+  "hip": "7.2.0-c0adf921a0",
+  "cuda": null,
+  "device_count": 1,
+  "is_rocm": true,
+  "name": "AMD Radeon RX 7900 XTX",
+  "gcn_arch": "gfx1100",
+  "total_memory_gb": 23.98,
+  "multi_processor_count": 48,
+  "bf16_supported": true,
+  "sdpa_backends": {
+    "FLASH_ATTENTION": true,
+    "EFFICIENT_ATTENTION": true,
+    "MATH": true,
+    "CUDNN_ATTENTION": false
+  }
+}
+params: 97,443,802
+train windows/epoch: 1,224,179  val windows: 5,704
+step    300/18000 loss 5.7028 ppl 299.71 lr 6.00e-05 gnorm 8.28 944 tok/s brain 44.7% syn 45.0% 32sweeps
+step    400/18000 loss 5.5223 ppl 250.20 lr 6.00e-05 gnorm 8.27 939 tok/s brain 44.7% syn 44.9% 32sweeps
+  eval val_loss 5.9195 val_ppl 372.23 best 5.9195
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.82% active, drive rank 256/256, synapse use 45.1%, batch participation 6.1/6.3 of 8

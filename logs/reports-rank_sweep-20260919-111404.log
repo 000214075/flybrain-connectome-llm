@@ -1,0 +1,430 @@
+11:14:04 run start ranks=128,256,512 configs=configs/train_connectome_rank512_long.json pid=32444 log=C:\Users\heyiy\Desktop\cangying\reports\rank_sweep-20260919-111404.log
+11:14:04 === train_connectome_rank512_long.json train start (out_dir=E:/flybrain-connectome/rank512-long) ===
+  TORCH_BLAS_PREFER_HIPBLASLT=1
+  TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1
+  HIPBLASLT_ALLOW_TF32=1
+  MIOPEN_FIND_MODE=FAST
+whole brain: 164,587 neurons, 25,563,096 synapses (106,791 excitatory / 57,255 inhibitory), 1 chunks x 1 sweeps per pass, rank 512, one sweep per token, the whole sequence model, impl=csr-scaled
+{
+  "torch": "2.9.1+rocm7.10.0a20251120",
+  "hip": "7.2.0-c0adf921a0",
+  "cuda": null,
+  "device_count": 1,
+  "is_rocm": true,
+  "name": "AMD Radeon RX 7900 XTX",
+  "gcn_arch": "gfx1100",
+  "total_memory_gb": 23.98,
+  "multi_processor_count": 48,
+  "bf16_supported": true,
+  "sdpa_backends": {
+    "FLASH_ATTENTION": true,
+    "EFFICIENT_ATTENTION": true,
+    "MATH": true,
+    "CUDNN_ATTENTION": false
+  }
+}
+params: 186,168,794
+train windows/epoch: 1,224,179  val windows: 5,704
+python.exe : C:\Users\heyiy\Desktop\cangying\src\flybrain\wholebrain.py:184: UserWarning: Sparse CSR tensor support is 
+in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://git
+hub.com/pytorch/pytorch/issues. (Triggered internally at B:\src\torch\aten\src\ATen\SparseCsrTensorImpl.cpp:55.)
+所在位置 C:\Users\heyiy\Desktop\cangying\scripts\run_rank_sweep.ps1:107 字符: 9
++         & $python -u -m flybrain.train --config $config --resume auto ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\heyiy\...orImpl.cpp:55.):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  sparse = torch.sparse_csr_tensor(
+step      1/18000 loss 9.8174 ppl 18350.49 lr 1.50e-06 gnorm 9.00 258 tok/s brain 44.8% syn 45.1% 32sweeps
+step    100/18000 loss 7.0591 ppl 1163.35 lr 6.00e-05 gnorm 8.32 882 tok/s brain 44.7% syn 45.1% 32sweeps
+step    200/18000 loss 5.7931 ppl 328.02 lr 6.00e-05 gnorm 8.01 883 tok/s brain 44.7% syn 45.0% 32sweeps
+  eval val_loss 5.9526 val_ppl 384.77 best 5.9526
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.81% active, drive rank 507/512, synapse use 44.8%, batch participation 6.5/6.7 of 8
+step    300/18000 loss 5.5802 ppl 265.12 lr 6.00e-05 gnorm 8.27 877 tok/s brain 44.6% syn 45.0% 32sweeps
+step    400/18000 loss 5.4330 ppl 228.83 lr 6.00e-05 gnorm 9.02 886 tok/s brain 44.6% syn 44.9% 32sweeps
+  eval val_loss 5.5989 val_ppl 270.14 best 5.5989
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.63% active, drive rank 508/512, synapse use 44.9%, batch participation 6.1/5.6 of 8
+step    500/18000 loss 5.3347 ppl 207.41 lr 5.99e-05 gnorm 8.23 880 tok/s brain 44.5% syn 44.9% 32sweeps
+step    600/18000 loss 5.2946 ppl 199.26 lr 5.99e-05 gnorm 12.03 883 tok/s brain 44.5% syn 44.9% 32sweeps
+  eval val_loss 5.5161 val_ppl 248.67 best 5.5161
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.55% active, drive rank 508/512, synapse use 45.0%, batch participation 6.5/6.3 of 8
+step    700/18000 loss 5.1824 ppl 178.10 lr 5.98e-05 gnorm 8.66 871 tok/s brain 44.5% syn 44.8% 32sweeps
+step    800/18000 loss 5.1329 ppl 169.51 lr 5.98e-05 gnorm 8.35 883 tok/s brain 44.4% syn 44.9% 32sweeps
+  eval val_loss 5.3377 val_ppl 208.03 best 5.3377
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.26% active, drive rank 508/512, synapse use 44.8%, batch participation 6.4/6.4 of 8
+step    900/18000 loss 5.0386 ppl 154.25 lr 5.97e-05 gnorm 7.43 884 tok/s brain 44.4% syn 44.9% 32sweeps
+step   1000/18000 loss 5.0559 ppl 156.95 lr 5.97e-05 gnorm 8.79 879 tok/s brain 44.4% syn 44.8% 32sweeps
+  eval val_loss 5.1971 val_ppl 180.75 best 5.1971
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.14% active, drive rank 508/512, synapse use 44.8%, batch participation 6.0/6.5 of 8
+step   1100/18000 loss 4.9785 ppl 145.26 lr 5.96e-05 gnorm 7.69 880 tok/s brain 44.4% syn 44.9% 32sweeps
+step   1200/18000 loss 4.8621 ppl 129.29 lr 5.95e-05 gnorm 8.38 882 tok/s brain 44.3% syn 44.7% 32sweeps
+  eval val_loss 5.1481 val_ppl 172.10 best 5.1481
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.33% active, drive rank 508/512, synapse use 44.9%, batch participation 6.3/6.5 of 8
+step   1300/18000 loss 4.8582 ppl 128.79 lr 5.94e-05 gnorm 8.52 875 tok/s brain 44.3% syn 44.8% 32sweeps
+step   1400/18000 loss 4.8815 ppl 131.83 lr 5.93e-05 gnorm 8.18 882 tok/s brain 44.2% syn 44.7% 32sweeps
+  eval val_loss 5.2163 val_ppl 184.24 best 5.1481
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.07% active, drive rank 508/512, synapse use 44.7%, batch participation 6.1/6.2 of 8
+step   1500/18000 loss 4.7583 ppl 116.55 lr 5.92e-05 gnorm 7.55 883 tok/s brain 44.2% syn 44.7% 32sweeps
+step   1600/18000 loss 4.7584 ppl 116.56 lr 5.91e-05 gnorm 8.55 882 tok/s brain 44.2% syn 44.7% 32sweeps
+  eval val_loss 5.0196 val_ppl 151.35 best 5.0196
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.95% active, drive rank 508/512, synapse use 44.9%, batch participation 4.3/6.0 of 8
+step   1700/18000 loss 4.7648 ppl 117.31 lr 5.90e-05 gnorm 8.08 886 tok/s brain 44.2% syn 44.5% 32sweeps
+step   1800/18000 loss 4.6903 ppl 108.88 lr 5.89e-05 gnorm 7.78 874 tok/s brain 44.2% syn 44.6% 32sweeps
+  eval val_loss 4.8987 val_ppl 134.12 best 4.8987
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.34% active, drive rank 508/512, synapse use 44.7%, batch participation 6.1/5.8 of 8
+step   1900/18000 loss 4.6539 ppl 104.99 lr 5.87e-05 gnorm 8.43 886 tok/s brain 44.1% syn 44.6% 32sweeps
+step   2000/18000 loss 4.7041 ppl 110.39 lr 5.86e-05 gnorm 8.34 888 tok/s brain 44.1% syn 44.6% 32sweeps
+  eval val_loss 4.8269 val_ppl 124.83 best 4.8269
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.87% active, drive rank 508/512, synapse use 44.8%, batch participation 5.4/6.0 of 8
+step   2100/18000 loss 4.6498 ppl 104.56 lr 5.85e-05 gnorm 7.04 886 tok/s brain 44.0% syn 44.6% 32sweeps
+step   2200/18000 loss 4.6006 ppl 99.54 lr 5.83e-05 gnorm 10.29 884 tok/s brain 44.0% syn 44.6% 32sweeps
+  eval val_loss 4.8824 val_ppl 131.95 best 4.8269
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.68% active, drive rank 508/512, synapse use 44.7%, batch participation 6.5/6.6 of 8
+step   2300/18000 loss 4.6184 ppl 101.33 lr 5.82e-05 gnorm 12.59 886 tok/s brain 44.0% syn 44.7% 32sweeps
+step   2400/18000 loss 4.5272 ppl 92.50 lr 5.80e-05 gnorm 7.55 878 tok/s brain 44.0% syn 44.5% 32sweeps
+  eval val_loss 4.7564 val_ppl 116.33 best 4.7564
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.46% active, drive rank 508/512, synapse use 44.8%, batch participation 3.7/6.1 of 8
+step   2500/18000 loss 4.5178 ppl 91.64 lr 5.78e-05 gnorm 7.07 888 tok/s brain 43.9% syn 44.4% 32sweeps
+step   2600/18000 loss 4.5051 ppl 90.48 lr 5.76e-05 gnorm 6.90 876 tok/s brain 44.0% syn 44.7% 32sweeps
+  eval val_loss 4.6871 val_ppl 108.54 best 4.6871
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.67% active, drive rank 508/512, synapse use 44.6%, batch participation 6.3/6.3 of 8
+step   2700/18000 loss 4.5026 ppl 90.25 lr 5.75e-05 gnorm 7.25 878 tok/s brain 43.9% syn 44.8% 32sweeps
+step   2800/18000 loss 4.4803 ppl 88.27 lr 5.73e-05 gnorm 6.86 889 tok/s brain 43.9% syn 44.6% 32sweeps
+  eval val_loss 4.6720 val_ppl 106.91 best 4.6720
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.06% active, drive rank 508/512, synapse use 44.3%, batch participation 6.5/6.6 of 8
+step   2900/18000 loss 4.4463 ppl 85.31 lr 5.71e-05 gnorm 6.96 889 tok/s brain 43.9% syn 44.5% 32sweeps
+step   3000/18000 loss 4.4484 ppl 85.49 lr 5.69e-05 gnorm 7.09 882 tok/s brain 44.0% syn 44.5% 32sweeps
+  eval val_loss 4.5818 val_ppl 97.69 best 4.5818
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.18% active, drive rank 508/512, synapse use 44.5%, batch participation 4.1/6.6 of 8
+step   3100/18000 loss 4.4021 ppl 81.62 lr 5.66e-05 gnorm 7.69 876 tok/s brain 43.8% syn 44.5% 32sweeps
+step   3200/18000 loss 4.4361 ppl 84.45 lr 5.64e-05 gnorm 6.54 875 tok/s brain 43.8% syn 44.7% 32sweeps
+  eval val_loss 4.5959 val_ppl 99.08 best 4.5818
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.57% active, drive rank 508/512, synapse use 44.6%, batch participation 6.6/6.4 of 8
+step   3300/18000 loss 4.3332 ppl 76.19 lr 5.62e-05 gnorm 6.92 886 tok/s brain 43.9% syn 44.5% 32sweeps
+step   3400/18000 loss 4.3601 ppl 78.27 lr 5.60e-05 gnorm 7.12 884 tok/s brain 43.8% syn 44.5% 32sweeps
+  eval val_loss 4.6105 val_ppl 100.54 best 4.5818
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.10% active, drive rank 508/512, synapse use 44.8%, batch participation 5.6/6.3 of 8
+step   3500/18000 loss 4.3168 ppl 74.95 lr 5.57e-05 gnorm 6.91 896 tok/s brain 43.8% syn 44.6% 32sweeps
+step   3600/18000 loss 4.3322 ppl 76.11 lr 5.55e-05 gnorm 7.74 898 tok/s brain 43.8% syn 44.5% 32sweeps
+  eval val_loss 4.5104 val_ppl 90.95 best 4.5104
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.77% active, drive rank 508/512, synapse use 44.3%, batch participation 6.5/5.2 of 8
+step   3700/18000 loss 4.2651 ppl 71.17 lr 5.52e-05 gnorm 6.93 883 tok/s brain 43.7% syn 44.5% 32sweeps
+step   3800/18000 loss 4.3158 ppl 74.87 lr 5.50e-05 gnorm 6.60 883 tok/s brain 43.6% syn 44.6% 32sweeps
+  eval val_loss 4.4781 val_ppl 88.06 best 4.4781
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.43% active, drive rank 508/512, synapse use 44.7%, batch participation 4.4/6.1 of 8
+step   3900/18000 loss 4.2922 ppl 73.12 lr 5.47e-05 gnorm 6.58 882 tok/s brain 43.7% syn 44.6% 32sweeps
+step   4000/18000 loss 4.2974 ppl 73.51 lr 5.45e-05 gnorm 7.61 897 tok/s brain 43.6% syn 44.6% 32sweeps
+  eval val_loss 4.5626 val_ppl 95.83 best 4.4781
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.32% active, drive rank 508/512, synapse use 44.4%, batch participation 6.3/6.4 of 8
+step   4100/18000 loss 4.2306 ppl 68.76 lr 5.42e-05 gnorm 6.45 886 tok/s brain 43.6% syn 44.4% 32sweeps
+step   4200/18000 loss 4.2468 ppl 69.88 lr 5.39e-05 gnorm 10.13 887 tok/s brain 43.7% syn 44.8% 32sweeps
+  eval val_loss 4.4085 val_ppl 82.15 best 4.4085
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.84% active, drive rank 508/512, synapse use 44.5%, batch participation 6.5/5.9 of 8
+step   4300/18000 loss 4.1903 ppl 66.04 lr 5.36e-05 gnorm 6.64 880 tok/s brain 43.7% syn 44.4% 32sweeps
+step   4400/18000 loss 4.1618 ppl 64.19 lr 5.34e-05 gnorm 8.34 888 tok/s brain 43.6% syn 44.5% 32sweeps
+  eval val_loss 4.4233 val_ppl 83.37 best 4.4085
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.38% active, drive rank 508/512, synapse use 44.9%, batch participation 6.6/5.7 of 8
+step   4500/18000 loss 4.2569 ppl 70.59 lr 5.31e-05 gnorm 7.12 894 tok/s brain 43.5% syn 44.7% 32sweeps
+step   4600/18000 loss 4.2075 ppl 67.19 lr 5.28e-05 gnorm 6.33 886 tok/s brain 43.6% syn 44.2% 32sweeps
+  eval val_loss 4.3577 val_ppl 78.08 best 4.3577
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.92% active, drive rank 508/512, synapse use 44.6%, batch participation 6.6/4.4 of 8
+step   4700/18000 loss 4.1487 ppl 63.35 lr 5.25e-05 gnorm 6.44 888 tok/s brain 43.5% syn 44.3% 32sweeps
+step   4800/18000 loss 4.1304 ppl 62.20 lr 5.22e-05 gnorm 8.42 892 tok/s brain 43.5% syn 44.8% 32sweeps
+  eval val_loss 4.3993 val_ppl 81.39 best 4.3577
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.03% active, drive rank 508/512, synapse use 44.4%, batch participation 6.4/6.1 of 8
+step   4900/18000 loss 4.1389 ppl 62.74 lr 5.18e-05 gnorm 8.60 886 tok/s brain 43.6% syn 44.3% 32sweeps
+step   5000/18000 loss 4.1408 ppl 62.85 lr 5.15e-05 gnorm 10.01 884 tok/s brain 43.5% syn 44.6% 32sweeps
+  eval val_loss 4.4145 val_ppl 82.64 best 4.3577
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.76% active, drive rank 508/512, synapse use 43.8%, batch participation 6.3/6.4 of 8
+step   5100/18000 loss 4.1507 ppl 63.48 lr 5.12e-05 gnorm 6.42 882 tok/s brain 43.5% syn 44.4% 32sweeps
+step   5200/18000 loss 4.1071 ppl 60.77 lr 5.09e-05 gnorm 6.33 886 tok/s brain 43.3% syn 44.6% 32sweeps
+  eval val_loss 4.2980 val_ppl 73.55 best 4.2980
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.95% active, drive rank 508/512, synapse use 44.4%, batch participation 6.5/6.0 of 8
+step   5300/18000 loss 4.1135 ppl 61.16 lr 5.05e-05 gnorm 10.65 890 tok/s brain 43.5% syn 44.4% 32sweeps
+step   5400/18000 loss 4.0423 ppl 56.95 lr 5.02e-05 gnorm 6.34 888 tok/s brain 43.5% syn 44.5% 32sweeps
+  eval val_loss 4.2445 val_ppl 69.72 best 4.2445
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.61% active, drive rank 508/512, synapse use 44.7%, batch participation 6.5/6.0 of 8
+step   5500/18000 loss 4.1064 ppl 60.73 lr 4.99e-05 gnorm 10.60 877 tok/s brain 43.4% syn 44.7% 32sweeps
+step   5600/18000 loss 4.1062 ppl 60.72 lr 4.95e-05 gnorm 7.48 889 tok/s brain 43.4% syn 44.2% 32sweeps
+  eval val_loss 4.2964 val_ppl 73.43 best 4.2445
+  whole brain: 164,587 neurons, 25,563,096 synapses, 39.64% active, drive rank 508/512, synapse use 44.4%, batch participation 6.5/4.6 of 8
+step   5700/18000 loss 4.0667 ppl 58.36 lr 4.92e-05 gnorm 9.01 883 tok/s brain 43.4% syn 44.5% 32sweeps
+step   5800/18000 loss 4.0802 ppl 59.16 lr 4.88e-05 gnorm 6.98 884 tok/s brain 43.5% syn 44.6% 32sweeps
+  eval val_loss 4.2149 val_ppl 67.69 best 4.2149
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.41% active, drive rank 508/512, synapse use 44.0%, batch participation 5.7/5.7 of 8
+step   5900/18000 loss 3.9979 ppl 54.48 lr 4.85e-05 gnorm 8.49 897 tok/s brain 43.5% syn 44.6% 32sweeps
+step   6000/18000 loss 3.9995 ppl 54.57 lr 4.81e-05 gnorm 6.71 893 tok/s brain 43.2% syn 44.4% 32sweeps
+  eval val_loss 4.2070 val_ppl 67.15 best 4.2070
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.82% active, drive rank 509/512, synapse use 44.3%, batch participation 6.3/5.9 of 8
+step   6100/18000 loss 4.0214 ppl 55.78 lr 4.77e-05 gnorm 11.15 885 tok/s brain 43.4% syn 44.4% 32sweeps
+step   6200/18000 loss 3.9956 ppl 54.36 lr 4.74e-05 gnorm 6.25 882 tok/s brain 43.3% syn 44.3% 32sweeps
+  eval val_loss 4.3059 val_ppl 74.13 best 4.2070
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.75% active, drive rank 509/512, synapse use 44.2%, batch participation 6.3/6.2 of 8
+step   6300/18000 loss 3.9881 ppl 53.95 lr 4.70e-05 gnorm 8.79 882 tok/s brain 43.3% syn 44.4% 32sweeps
+step   6400/18000 loss 4.0302 ppl 56.27 lr 4.66e-05 gnorm 7.33 872 tok/s brain 43.4% syn 44.5% 32sweeps
+  eval val_loss 4.1763 val_ppl 65.13 best 4.1763
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.62% active, drive rank 509/512, synapse use 44.6%, batch participation 6.3/5.5 of 8
+step   6500/18000 loss 3.9837 ppl 53.72 lr 4.62e-05 gnorm 6.45 884 tok/s brain 43.4% syn 44.6% 32sweeps
+step   6600/18000 loss 3.9881 ppl 53.95 lr 4.59e-05 gnorm 7.41 872 tok/s brain 43.3% syn 44.5% 32sweeps
+  eval val_loss 4.1208 val_ppl 61.61 best 4.1208
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.91% active, drive rank 509/512, synapse use 44.4%, batch participation 6.3/6.6 of 8
+step   6700/18000 loss 3.9780 ppl 53.41 lr 4.55e-05 gnorm 6.19 880 tok/s brain 43.2% syn 44.4% 32sweeps
+step   6800/18000 loss 3.9439 ppl 51.62 lr 4.51e-05 gnorm 6.76 882 tok/s brain 43.4% syn 44.4% 32sweeps
+  eval val_loss 4.0962 val_ppl 60.11 best 4.0962
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.22% active, drive rank 509/512, synapse use 44.1%, batch participation 6.5/4.6 of 8
+step   6900/18000 loss 3.9352 ppl 51.17 lr 4.47e-05 gnorm 6.33 884 tok/s brain 43.1% syn 44.6% 32sweeps
+step   7000/18000 loss 3.9791 ppl 53.47 lr 4.43e-05 gnorm 6.73 883 tok/s brain 43.2% syn 44.1% 32sweeps
+  eval val_loss 4.0653 val_ppl 58.28 best 4.0653
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.34% active, drive rank 509/512, synapse use 44.6%, batch participation 5.9/6.7 of 8
+step   7100/18000 loss 3.9068 ppl 49.74 lr 4.39e-05 gnorm 6.36 890 tok/s brain 43.3% syn 44.5% 32sweeps
+step   7200/18000 loss 3.9259 ppl 50.70 lr 4.35e-05 gnorm 7.63 888 tok/s brain 43.2% syn 44.4% 32sweeps
+  eval val_loss 4.0774 val_ppl 58.99 best 4.0653
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.56% active, drive rank 509/512, synapse use 44.3%, batch participation 6.0/4.9 of 8
+step   7300/18000 loss 3.8755 ppl 48.20 lr 4.31e-05 gnorm 6.06 886 tok/s brain 43.3% syn 44.6% 32sweeps
+step   7400/18000 loss 3.8978 ppl 49.30 lr 4.27e-05 gnorm 7.55 883 tok/s brain 43.2% syn 44.7% 32sweeps
+  eval val_loss 4.1388 val_ppl 62.73 best 4.0653
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.13% active, drive rank 509/512, synapse use 44.7%, batch participation 6.0/6.3 of 8
+step   7500/18000 loss 3.8548 ppl 47.22 lr 4.23e-05 gnorm 8.17 890 tok/s brain 43.3% syn 44.6% 32sweeps
+step   7600/18000 loss 3.9105 ppl 49.92 lr 4.19e-05 gnorm 14.14 897 tok/s brain 43.2% syn 44.4% 32sweeps
+  eval val_loss 4.0017 val_ppl 54.69 best 4.0017
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.21% active, drive rank 509/512, synapse use 44.8%, batch participation 5.5/5.9 of 8
+step   7700/18000 loss 3.8595 ppl 47.44 lr 4.15e-05 gnorm 6.09 894 tok/s brain 43.2% syn 44.5% 32sweeps
+step   7800/18000 loss 3.8980 ppl 49.30 lr 4.11e-05 gnorm 5.97 897 tok/s brain 43.3% syn 44.5% 32sweeps
+  eval val_loss 4.0508 val_ppl 57.44 best 4.0017
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.35% active, drive rank 509/512, synapse use 44.5%, batch participation 6.4/5.3 of 8
+step   7900/18000 loss 3.8471 ppl 46.86 lr 4.07e-05 gnorm 7.48 894 tok/s brain 43.2% syn 44.5% 32sweeps
+step   8000/18000 loss 3.8511 ppl 47.05 lr 4.03e-05 gnorm 7.03 901 tok/s brain 43.2% syn 44.3% 32sweeps
+  eval val_loss 3.9780 val_ppl 53.41 best 3.9780
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.86% active, drive rank 509/512, synapse use 44.5%, batch participation 5.9/5.3 of 8
+step   8100/18000 loss 3.8125 ppl 45.26 lr 3.98e-05 gnorm 6.08 903 tok/s brain 43.1% syn 44.0% 32sweeps
+step   8200/18000 loss 3.8304 ppl 46.08 lr 3.94e-05 gnorm 7.38 892 tok/s brain 43.3% syn 44.8% 32sweeps
+  eval val_loss 3.9476 val_ppl 51.81 best 3.9476
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.44% active, drive rank 509/512, synapse use 44.8%, batch participation 6.4/6.5 of 8
+step   8300/18000 loss 3.8499 ppl 46.99 lr 3.90e-05 gnorm 7.25 894 tok/s brain 43.2% syn 44.4% 32sweeps
+step   8400/18000 loss 3.8644 ppl 47.68 lr 3.86e-05 gnorm 5.95 900 tok/s brain 43.1% syn 44.2% 32sweeps
+  eval val_loss 3.9300 val_ppl 50.91 best 3.9300
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.50% active, drive rank 509/512, synapse use 44.7%, batch participation 6.4/6.5 of 8
+step   8500/18000 loss 3.7744 ppl 43.57 lr 3.82e-05 gnorm 11.49 894 tok/s brain 43.2% syn 44.6% 32sweeps
+step   8600/18000 loss 3.7693 ppl 43.35 lr 3.78e-05 gnorm 7.23 896 tok/s brain 43.2% syn 44.5% 32sweeps
+  eval val_loss 3.9620 val_ppl 52.56 best 3.9300
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.39% active, drive rank 509/512, synapse use 44.5%, batch participation 5.9/5.7 of 8
+step   8700/18000 loss 3.8019 ppl 44.79 lr 3.73e-05 gnorm 6.76 902 tok/s brain 43.1% syn 44.2% 32sweeps
+step   8800/18000 loss 3.7633 ppl 43.09 lr 3.69e-05 gnorm 7.50 889 tok/s brain 43.2% syn 44.6% 32sweeps
+  eval val_loss 3.9746 val_ppl 53.23 best 3.9300
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.35% active, drive rank 509/512, synapse use 44.8%, batch participation 4.4/5.4 of 8
+step   8900/18000 loss 3.8092 ppl 45.12 lr 3.65e-05 gnorm 6.43 895 tok/s brain 43.1% syn 44.2% 32sweeps
+step   9000/18000 loss 3.7050 ppl 40.65 lr 3.61e-05 gnorm 6.72 906 tok/s brain 43.0% syn 44.7% 32sweeps
+  eval val_loss 3.9757 val_ppl 53.29 best 3.9300
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.64% active, drive rank 509/512, synapse use 44.3%, batch participation 5.6/5.4 of 8
+step   9100/18000 loss 3.7674 ppl 43.27 lr 3.57e-05 gnorm 6.57 902 tok/s brain 43.2% syn 44.4% 32sweeps
+step   9200/18000 loss 3.7364 ppl 41.95 lr 3.52e-05 gnorm 7.24 903 tok/s brain 43.2% syn 44.5% 32sweeps
+  eval val_loss 3.9317 val_ppl 50.99 best 3.9300
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.83% active, drive rank 509/512, synapse use 43.9%, batch participation 5.9/6.0 of 8
+step   9300/18000 loss 3.7454 ppl 42.33 lr 3.48e-05 gnorm 6.50 900 tok/s brain 43.2% syn 44.7% 32sweeps
+step   9400/18000 loss 3.7902 ppl 44.26 lr 3.44e-05 gnorm 6.38 900 tok/s brain 43.1% syn 44.6% 32sweeps
+  eval val_loss 3.9163 val_ppl 50.22 best 3.9163
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.36% active, drive rank 509/512, synapse use 44.4%, batch participation 6.0/6.5 of 8
+step   9500/18000 loss 3.7304 ppl 41.70 lr 3.40e-05 gnorm 10.50 893 tok/s brain 43.3% syn 44.5% 32sweeps
+step   9600/18000 loss 3.7112 ppl 40.90 lr 3.36e-05 gnorm 6.17 892 tok/s brain 43.1% syn 44.6% 32sweeps
+  eval val_loss 3.8546 val_ppl 47.21 best 3.8546
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.63% active, drive rank 509/512, synapse use 44.4%, batch participation 6.5/6.0 of 8
+step   9700/18000 loss 3.7240 ppl 41.43 lr 3.32e-05 gnorm 8.88 892 tok/s brain 43.0% syn 44.5% 32sweeps
+step   9800/18000 loss 3.7144 ppl 41.03 lr 3.27e-05 gnorm 7.08 892 tok/s brain 43.1% syn 44.5% 32sweeps
+  eval val_loss 3.8944 val_ppl 49.12 best 3.8546
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.83% active, drive rank 509/512, synapse use 44.9%, batch participation 6.3/6.1 of 8
+step   9900/18000 loss 3.7282 ppl 41.60 lr 3.23e-05 gnorm 9.01 892 tok/s brain 43.2% syn 45.0% 32sweeps
+step  10000/18000 loss 3.7121 ppl 40.94 lr 3.19e-05 gnorm 6.28 888 tok/s brain 43.2% syn 44.3% 32sweeps
+  eval val_loss 3.8899 val_ppl 48.91 best 3.8546
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.73% active, drive rank 509/512, synapse use 43.7%, batch participation 6.1/6.0 of 8
+step  10100/18000 loss 3.7159 ppl 41.09 lr 3.15e-05 gnorm 6.46 890 tok/s brain 43.1% syn 44.3% 32sweeps
+step  10200/18000 loss 3.7842 ppl 44.00 lr 3.11e-05 gnorm 6.32 891 tok/s brain 43.0% syn 44.3% 32sweeps
+  eval val_loss 3.8347 val_ppl 46.28 best 3.8347
+  whole brain: 164,587 neurons, 25,563,096 synapses, 39.39% active, drive rank 509/512, synapse use 44.5%, batch participation 5.8/5.5 of 8
+step  10300/18000 loss 3.7277 ppl 41.59 lr 3.07e-05 gnorm 5.99 890 tok/s brain 43.2% syn 44.4% 32sweeps
+step  10400/18000 loss 3.7074 ppl 40.75 lr 3.03e-05 gnorm 6.26 890 tok/s brain 43.2% syn 44.6% 32sweeps
+  eval val_loss 3.8464 val_ppl 46.82 best 3.8347
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.33% active, drive rank 509/512, synapse use 44.9%, batch participation 5.7/5.3 of 8
+step  10500/18000 loss 3.6405 ppl 38.11 lr 2.99e-05 gnorm 6.04 891 tok/s brain 43.3% syn 44.4% 32sweeps
+step  10600/18000 loss 3.6220 ppl 37.41 lr 2.95e-05 gnorm 8.86 892 tok/s brain 43.2% syn 44.7% 32sweeps
+  eval val_loss 3.8512 val_ppl 47.05 best 3.8347
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.88% active, drive rank 509/512, synapse use 44.6%, batch participation 5.9/5.8 of 8
+step  10700/18000 loss 3.6746 ppl 39.43 lr 2.91e-05 gnorm 10.44 892 tok/s brain 43.1% syn 44.8% 32sweeps
+step  10800/18000 loss 3.6608 ppl 38.89 lr 2.87e-05 gnorm 6.44 886 tok/s brain 43.4% syn 44.6% 32sweeps
+  eval val_loss 3.8655 val_ppl 47.73 best 3.8347
+  whole brain: 164,587 neurons, 25,563,096 synapses, 39.61% active, drive rank 509/512, synapse use 44.0%, batch participation 5.2/3.5 of 8
+step  10900/18000 loss 3.6182 ppl 37.27 lr 2.83e-05 gnorm 11.70 884 tok/s brain 43.2% syn 44.6% 32sweeps
+step  11000/18000 loss 3.6491 ppl 38.44 lr 2.79e-05 gnorm 6.74 884 tok/s brain 43.2% syn 44.6% 32sweeps
+  eval val_loss 3.8411 val_ppl 46.57 best 3.8347
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.19% active, drive rank 509/512, synapse use 44.5%, batch participation 5.8/5.6 of 8
+step  11100/18000 loss 3.6614 ppl 38.92 lr 2.75e-05 gnorm 7.98 885 tok/s brain 43.1% syn 44.0% 32sweeps
+step  11200/18000 loss 3.6154 ppl 37.17 lr 2.71e-05 gnorm 10.39 884 tok/s brain 43.1% syn 44.5% 32sweeps
+  eval val_loss 3.8374 val_ppl 46.41 best 3.8347
+  whole brain: 164,587 neurons, 25,563,096 synapses, 39.76% active, drive rank 509/512, synapse use 44.9%, batch participation 6.0/5.8 of 8
+step  11300/18000 loss 3.6569 ppl 38.74 lr 2.67e-05 gnorm 6.03 882 tok/s brain 43.1% syn 44.6% 32sweeps
+step  11400/18000 loss 3.6434 ppl 38.22 lr 2.63e-05 gnorm 6.36 880 tok/s brain 43.1% syn 44.2% 32sweeps
+  eval val_loss 3.7906 val_ppl 44.28 best 3.7906
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.20% active, drive rank 509/512, synapse use 45.0%, batch participation 5.7/5.6 of 8
+step  11500/18000 loss 3.6018 ppl 36.66 lr 2.59e-05 gnorm 7.17 884 tok/s brain 43.1% syn 44.5% 32sweeps
+step  11600/18000 loss 3.6016 ppl 36.66 lr 2.55e-05 gnorm 7.60 892 tok/s brain 43.1% syn 44.7% 32sweeps
+  eval val_loss 3.8043 val_ppl 44.90 best 3.7906
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.36% active, drive rank 509/512, synapse use 44.3%, batch participation 5.7/5.7 of 8
+step  11700/18000 loss 3.6111 ppl 37.01 lr 2.52e-05 gnorm 7.09 893 tok/s brain 43.3% syn 44.5% 32sweeps
+step  11800/18000 loss 3.5725 ppl 35.60 lr 2.48e-05 gnorm 8.67 891 tok/s brain 43.2% syn 44.8% 32sweeps
+  eval val_loss 3.7830 val_ppl 43.95 best 3.7830
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.11% active, drive rank 509/512, synapse use 44.9%, batch participation 5.6/5.6 of 8
+step  11900/18000 loss 3.6109 ppl 37.00 lr 2.44e-05 gnorm 7.25 889 tok/s brain 43.1% syn 44.6% 32sweeps
+step  12000/18000 loss 3.5927 ppl 36.33 lr 2.41e-05 gnorm 6.01 891 tok/s brain 43.2% syn 44.2% 32sweeps
+  eval val_loss 3.7737 val_ppl 43.54 best 3.7737
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.33% active, drive rank 509/512, synapse use 44.8%, batch participation 5.8/3.3 of 8
+step  12100/18000 loss 3.5912 ppl 36.28 lr 2.37e-05 gnorm 7.85 889 tok/s brain 43.2% syn 44.8% 32sweeps
+step  12200/18000 loss 3.6055 ppl 36.80 lr 2.33e-05 gnorm 6.72 888 tok/s brain 43.1% syn 44.5% 32sweeps
+  eval val_loss 3.7799 val_ppl 43.81 best 3.7737
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.38% active, drive rank 509/512, synapse use 44.9%, batch participation 6.2/4.5 of 8
+step  12300/18000 loss 3.5656 ppl 35.36 lr 2.30e-05 gnorm 6.34 889 tok/s brain 43.2% syn 44.9% 32sweeps
+step  12400/18000 loss 3.5829 ppl 35.98 lr 2.26e-05 gnorm 6.42 886 tok/s brain 42.9% syn 44.4% 32sweeps
+  eval val_loss 3.7476 val_ppl 42.42 best 3.7476
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.70% active, drive rank 509/512, synapse use 43.8%, batch participation 6.4/6.1 of 8
+step  12500/18000 loss 3.5953 ppl 36.43 lr 2.23e-05 gnorm 6.38 892 tok/s brain 43.2% syn 44.4% 32sweeps
+step  12600/18000 loss 3.5315 ppl 34.17 lr 2.19e-05 gnorm 6.01 892 tok/s brain 43.1% syn 44.7% 32sweeps
+  eval val_loss 3.7760 val_ppl 43.64 best 3.7476
+  whole brain: 164,587 neurons, 25,563,096 synapses, 37.91% active, drive rank 509/512, synapse use 44.3%, batch participation 5.7/5.5 of 8
+step  12700/18000 loss 3.5781 ppl 35.81 lr 2.16e-05 gnorm 6.23 884 tok/s brain 43.1% syn 44.7% 32sweeps
+step  12800/18000 loss 3.5580 ppl 35.09 lr 2.13e-05 gnorm 13.20 891 tok/s brain 43.2% syn 44.5% 32sweeps
+  eval val_loss 3.7141 val_ppl 41.02 best 3.7141
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.16% active, drive rank 509/512, synapse use 44.7%, batch participation 6.0/5.1 of 8
+step  12900/18000 loss 3.4924 ppl 32.86 lr 2.09e-05 gnorm 6.92 892 tok/s brain 43.2% syn 44.7% 32sweeps
+step  13000/18000 loss 3.5315 ppl 34.18 lr 2.06e-05 gnorm 8.31 893 tok/s brain 43.2% syn 44.7% 32sweeps
+  eval val_loss 3.7109 val_ppl 40.89 best 3.7109
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.92% active, drive rank 509/512, synapse use 43.5%, batch participation 6.6/5.8 of 8
+step  13100/18000 loss 3.5260 ppl 33.99 lr 2.03e-05 gnorm 6.42 893 tok/s brain 43.1% syn 44.3% 32sweeps
+step  13200/18000 loss 3.5128 ppl 33.54 lr 2.00e-05 gnorm 9.91 891 tok/s brain 43.2% syn 44.8% 32sweeps
+  eval val_loss 3.7001 val_ppl 40.45 best 3.7001
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.30% active, drive rank 509/512, synapse use 44.6%, batch participation 6.2/4.2 of 8
+step  13300/18000 loss 3.5769 ppl 35.76 lr 1.97e-05 gnorm 5.72 899 tok/s brain 43.3% syn 44.7% 32sweeps
+step  13400/18000 loss 3.5762 ppl 35.74 lr 1.94e-05 gnorm 6.38 898 tok/s brain 43.3% syn 44.7% 32sweeps
+  eval val_loss 3.6948 val_ppl 40.24 best 3.6948
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.16% active, drive rank 509/512, synapse use 44.9%, batch participation 5.9/6.0 of 8
+step  13500/18000 loss 3.4950 ppl 32.95 lr 1.91e-05 gnorm 6.40 899 tok/s brain 43.1% syn 44.8% 32sweeps
+step  13600/18000 loss 3.5032 ppl 33.22 lr 1.88e-05 gnorm 6.77 898 tok/s brain 43.2% syn 44.6% 32sweeps
+  eval val_loss 3.6825 val_ppl 39.75 best 3.6825
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.10% active, drive rank 509/512, synapse use 44.9%, batch participation 5.4/6.0 of 8
+step  13700/18000 loss 3.5109 ppl 33.48 lr 1.85e-05 gnorm 6.38 897 tok/s brain 43.2% syn 44.7% 32sweeps
+step  13800/18000 loss 3.5159 ppl 33.65 lr 1.82e-05 gnorm 8.70 898 tok/s brain 43.3% syn 44.7% 32sweeps
+  eval val_loss 3.6741 val_ppl 39.41 best 3.6741
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.31% active, drive rank 509/512, synapse use 44.3%, batch participation 6.4/5.3 of 8
+step  13900/18000 loss 3.5051 ppl 33.28 lr 1.79e-05 gnorm 6.73 898 tok/s brain 43.1% syn 44.4% 32sweeps
+step  14000/18000 loss 3.5496 ppl 34.80 lr 1.76e-05 gnorm 7.16 892 tok/s brain 43.3% syn 44.5% 32sweeps
+  eval val_loss 3.6750 val_ppl 39.45 best 3.6741
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.67% active, drive rank 509/512, synapse use 45.3%, batch participation 6.3/4.5 of 8
+step  14100/18000 loss 3.5010 ppl 33.15 lr 1.74e-05 gnorm 8.34 891 tok/s brain 43.4% syn 44.9% 32sweeps
+step  14200/18000 loss 3.5090 ppl 33.42 lr 1.71e-05 gnorm 6.55 895 tok/s brain 43.2% syn 44.5% 32sweeps
+  eval val_loss 3.6746 val_ppl 39.43 best 3.6741
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.86% active, drive rank 509/512, synapse use 44.9%, batch participation 5.9/4.9 of 8
+step  14300/18000 loss 3.4935 ppl 32.90 lr 1.69e-05 gnorm 6.42 892 tok/s brain 43.2% syn 45.0% 32sweeps
+step  14400/18000 loss 3.4608 ppl 31.84 lr 1.66e-05 gnorm 7.54 896 tok/s brain 43.1% syn 44.3% 32sweeps
+  eval val_loss 3.6638 val_ppl 39.01 best 3.6638
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.39% active, drive rank 509/512, synapse use 44.0%, batch participation 5.8/6.2 of 8
+step  14500/18000 loss 3.5139 ppl 33.58 lr 1.64e-05 gnorm 6.38 892 tok/s brain 43.2% syn 45.0% 32sweeps
+step  14600/18000 loss 3.5290 ppl 34.09 lr 1.61e-05 gnorm 6.45 900 tok/s brain 43.3% syn 44.7% 32sweeps
+  eval val_loss 3.6778 val_ppl 39.56 best 3.6638
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.50% active, drive rank 509/512, synapse use 44.3%, batch participation 6.4/6.2 of 8
+step  14700/18000 loss 3.4742 ppl 32.27 lr 1.59e-05 gnorm 6.63 899 tok/s brain 43.1% syn 44.5% 32sweeps
+step  14800/18000 loss 3.4955 ppl 32.97 lr 1.57e-05 gnorm 7.99 900 tok/s brain 43.2% syn 44.8% 32sweeps
+  eval val_loss 3.6900 val_ppl 40.04 best 3.6638
+  whole brain: 164,587 neurons, 25,563,096 synapses, 38.22% active, drive rank 509/512, synapse use 44.3%, batch participation 6.0/4.6 of 8
+step  14900/18000 loss 3.4652 ppl 31.98 lr 1.54e-05 gnorm 6.59 904 tok/s brain 43.2% syn 44.8% 32sweeps
+step  15000/18000 loss 3.4764 ppl 32.34 lr 1.52e-05 gnorm 9.08 899 tok/s brain 43.4% syn 45.0% 32sweeps
+  eval val_loss 3.6807 val_ppl 39.68 best 3.6638
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.42% active, drive rank 509/512, synapse use 45.1%, batch participation 6.0/5.3 of 8
+step  15100/18000 loss 3.4401 ppl 31.19 lr 1.50e-05 gnorm 6.06 898 tok/s brain 43.1% syn 44.9% 32sweeps
+step  15200/18000 loss 3.4733 ppl 32.24 lr 1.48e-05 gnorm 6.79 900 tok/s brain 43.3% syn 44.9% 32sweeps
+  eval val_loss 3.6830 val_ppl 39.76 best 3.6638
+  whole brain: 164,587 neurons, 25,563,096 synapses, 40.79% active, drive rank 509/512, synapse use 44.5%, batch participation 5.1/4.2 of 8
+step  15300/18000 loss 3.4373 ppl 31.10 lr 1.46e-05 gnorm 6.78 900 tok/s brain 43.5% syn 44.4% 32sweeps
+step  15400/18000 loss 3.4997 ppl 33.10 lr 1.44e-05 gnorm 6.82 901 tok/s brain 43.4% syn 45.0% 32sweeps
+  eval val_loss 3.6554 val_ppl 38.68 best 3.6554
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.26% active, drive rank 509/512, synapse use 44.9%, batch participation 5.9/6.2 of 8
+step  15500/18000 loss 3.4508 ppl 31.53 lr 1.43e-05 gnorm 6.68 898 tok/s brain 43.2% syn 44.9% 32sweeps
+step  15600/18000 loss 3.4358 ppl 31.05 lr 1.41e-05 gnorm 7.27 903 tok/s brain 43.3% syn 44.8% 32sweeps
+  eval val_loss 3.6447 val_ppl 38.27 best 3.6447
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.07% active, drive rank 509/512, synapse use 45.0%, batch participation 5.9/4.8 of 8
+step  15700/18000 loss 3.4658 ppl 32.00 lr 1.39e-05 gnorm 6.54 893 tok/s brain 43.3% syn 44.6% 32sweeps
+step  15800/18000 loss 3.4403 ppl 31.20 lr 1.38e-05 gnorm 6.91 889 tok/s brain 43.3% syn 44.6% 32sweeps
+  eval val_loss 3.6266 val_ppl 37.58 best 3.6266
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.51% active, drive rank 509/512, synapse use 44.8%, batch participation 6.4/5.4 of 8
+step  15900/18000 loss 3.4679 ppl 32.07 lr 1.36e-05 gnorm 6.52 899 tok/s brain 43.3% syn 44.9% 32sweeps
+step  16000/18000 loss 3.4381 ppl 31.13 lr 1.35e-05 gnorm 8.44 900 tok/s brain 43.4% syn 44.9% 32sweeps
+  eval val_loss 3.6276 val_ppl 37.62 best 3.6266
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.56% active, drive rank 509/512, synapse use 45.2%, batch participation 5.9/5.0 of 8
+step  16100/18000 loss 3.4529 ppl 31.59 lr 1.33e-05 gnorm 9.25 897 tok/s brain 43.2% syn 44.6% 32sweeps
+step  16200/18000 loss 3.4542 ppl 31.63 lr 1.32e-05 gnorm 6.66 903 tok/s brain 43.3% syn 44.7% 32sweeps
+  eval val_loss 3.6120 val_ppl 37.04 best 3.6120
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.81% active, drive rank 509/512, synapse use 44.1%, batch participation 6.4/5.5 of 8
+step  16300/18000 loss 3.4419 ppl 31.25 lr 1.31e-05 gnorm 7.11 897 tok/s brain 43.2% syn 44.2% 32sweeps
+step  16400/18000 loss 3.4029 ppl 30.05 lr 1.29e-05 gnorm 6.60 897 tok/s brain 43.3% syn 44.7% 32sweeps
+  eval val_loss 3.6196 val_ppl 37.32 best 3.6120
+  whole brain: 164,587 neurons, 25,563,096 synapses, 43.30% active, drive rank 509/512, synapse use 44.9%, batch participation 5.6/6.2 of 8
+step  16500/18000 loss 3.4211 ppl 30.60 lr 1.28e-05 gnorm 6.72 901 tok/s brain 43.4% syn 44.7% 32sweeps
+step  16600/18000 loss 3.3848 ppl 29.51 lr 1.27e-05 gnorm 6.68 895 tok/s brain 43.5% syn 44.9% 32sweeps
+  eval val_loss 3.6398 val_ppl 38.09 best 3.6120
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.58% active, drive rank 509/512, synapse use 44.8%, batch participation 4.5/5.3 of 8
+step  16700/18000 loss 3.4493 ppl 31.48 lr 1.26e-05 gnorm 8.49 898 tok/s brain 43.2% syn 44.3% 32sweeps
+step  16800/18000 loss 3.4224 ppl 30.64 lr 1.25e-05 gnorm 7.33 904 tok/s brain 43.2% syn 45.0% 32sweeps
+  eval val_loss 3.6213 val_ppl 37.39 best 3.6120
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.47% active, drive rank 509/512, synapse use 45.0%, batch participation 6.4/6.1 of 8
+step  16900/18000 loss 3.4328 ppl 30.96 lr 1.24e-05 gnorm 6.65 897 tok/s brain 43.4% syn 44.9% 32sweeps
+step  17000/18000 loss 3.3947 ppl 29.81 lr 1.24e-05 gnorm 6.33 897 tok/s brain 43.3% syn 44.5% 32sweeps
+  eval val_loss 3.6231 val_ppl 37.46 best 3.6120
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.19% active, drive rank 509/512, synapse use 44.4%, batch participation 4.6/5.4 of 8
+step  17100/18000 loss 3.4503 ppl 31.51 lr 1.23e-05 gnorm 9.45 886 tok/s brain 43.4% syn 44.8% 32sweeps
+step  17200/18000 loss 3.4140 ppl 30.39 lr 1.22e-05 gnorm 6.77 884 tok/s brain 43.4% syn 45.0% 32sweeps
+  eval val_loss 3.5959 val_ppl 36.45 best 3.5959
+  whole brain: 164,587 neurons, 25,563,096 synapses, 39.54% active, drive rank 509/512, synapse use 44.7%, batch participation 6.1/3.3 of 8
+step  17300/18000 loss 3.3906 ppl 29.68 lr 1.22e-05 gnorm 6.62 884 tok/s brain 43.3% syn 44.7% 32sweeps
+step  17400/18000 loss 3.3642 ppl 28.91 lr 1.21e-05 gnorm 6.73 885 tok/s brain 43.2% syn 44.6% 32sweeps
+  eval val_loss 3.5886 val_ppl 36.19 best 3.5886
+  whole brain: 164,587 neurons, 25,563,096 synapses, 39.99% active, drive rank 509/512, synapse use 44.7%, batch participation 6.2/5.0 of 8
+step  17500/18000 loss 3.4183 ppl 30.52 lr 1.21e-05 gnorm 6.58 886 tok/s brain 43.2% syn 44.7% 32sweeps
+step  17600/18000 loss 3.4030 ppl 30.05 lr 1.21e-05 gnorm 6.29 883 tok/s brain 43.2% syn 44.5% 32sweeps
+  eval val_loss 3.6062 val_ppl 36.83 best 3.5886
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.27% active, drive rank 509/512, synapse use 44.6%, batch participation 5.9/5.4 of 8
+step  17700/18000 loss 3.4225 ppl 30.65 lr 1.20e-05 gnorm 8.44 880 tok/s brain 43.3% syn 44.8% 32sweeps
+step  17800/18000 loss 3.4352 ppl 31.04 lr 1.20e-05 gnorm 6.46 884 tok/s brain 43.2% syn 44.6% 32sweeps
+  eval val_loss 3.5951 val_ppl 36.42 best 3.5886
+  whole brain: 164,587 neurons, 25,563,096 synapses, 41.68% active, drive rank 509/512, synapse use 44.7%, batch participation 6.3/5.1 of 8
+step  17900/18000 loss 3.3677 ppl 29.01 lr 1.20e-05 gnorm 8.51 886 tok/s brain 43.4% syn 45.1% 32sweeps
+step  18000/18000 loss 3.3714 ppl 29.12 lr 1.20e-05 gnorm 6.75 889 tok/s brain 43.5% syn 45.1% 32sweeps
+  eval val_loss 3.6015 val_ppl 36.65 best 3.5886
+  whole brain: 164,587 neurons, 25,563,096 synapses, 42.62% active, drive rank 509/512, synapse use 45.0%, batch participation 5.6/3.7 of 8
+{
+  "steps": 18000,
+  "best_val_loss": 3.588648736476898,
+  "minutes": 359.61,
+  "params": 186168794,
+  "memory": "vram free 11.30 GiB / total 23.98 GiB, torch allocated 4.31 GiB"
+}
+17:14:06 === train_connectome_rank512_long.json train exit=0 (see note: exit code is not a verdict) ===
+python.exe : C:\Users\heyiy\Desktop\cangying\src\flybrain\wholebrain.py:184: UserWarning: Sparse CSR tensor support is 
+in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://git
+hub.com/pytorch/pytorch/issues. (Triggered internally at B:\src\torch\aten\src\ATen\SparseCsrTensorImpl.cpp:55.)
+所在位置 C:\Users\heyiy\Desktop\cangying\scripts\run_rank_sweep.ps1:114 字符: 13
++             & $python -u scripts\eval_checkpoint.py --checkpoint $che ...
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\heyiy\...orImpl.cpp:55.):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  sparse = torch.sparse_csr_tensor(
+{
+  "checkpoint": "E:\\flybrain-connectome\\rank512-long\\best.pt",
+  "checkpoint_step": 17400,
+  "tokens": "data\\tokenized_domain\\val.bin",
+  "context": 32,
+  "batches": 24,
+  "batch": 8,
+  "val_loss": 3.4279,
+  "val_ppl": 30.811,
+  "seconds": 5.1
+}
+17:14:17 === train_connectome_rank512_long.json eval exit=0 -> reports\eval_flybrain-connectome-rank512-long_c32.json ===
+17:14:17 run finished; fixed 24-batch results:
+17:14:17 SUMMARY flybrain-connectome-rank512-long: val_loss 3.4279 val_ppl 30.811
