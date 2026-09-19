@@ -583,15 +583,24 @@ flybrain-serve --checkpoint canonical-rank512.pt --tokenizer data\tokenized_doma
 
 ## 第三方数据
 
-本仓库**不包含**任何第三方数据集本体，只包含下载与构建脚本（`scripts/download.py`、
-`scripts/build_wholebrain.py`、`scripts/prepare_data.py`）。请自行获取并遵守各自条款：
+本仓库**不包含**第三方数据集的原始文件，只包含下载与构建脚本（`scripts/download.py`、
+`scripts/build_wholebrain.py`、`scripts/prepare_data.py`）。但**从 MaleCNS 构建出的连接组
+张量单独发布**在 [`v1.0-derived-connectome`](https://github.com/000214075/flybrain-connectome-llm/releases/tag/v1.0-derived-connectome)
+（`wholebrain.npz` 与两份打乱对照，共约 405 MB）——因为上游下载地址将来可能失效，而
+CC-BY-4.0 允许派生分发。**这三个张量按 CC-BY-4.0 使用，需保留署名**；仓库自己的代码是
+The Unlicense。请遵守各自条款：
 
 | 数据 | 来源 | 用途 | 许可（以其发布页为准） |
 |---|---|---|---|
 | MaleCNS v1.0 | Janelia | 全脑连接组：164,587 神经元 / 25,563,096 突触 | CC-BY-4.0 |
 | FlyWire | FlyWire 联盟 | 补充连接组与注释 | 见发布页 |
 | 中文维基百科 + TinyStories | 公开语料 | 通用语言预训练 | CC-BY-SA / CDLA |
-| DeepSeek 生成语料 | DeepSeek API | 蝇脑领域语料（教师蒸馏） | 受其服务条款约束，同样不随仓库分发 |
+| DeepSeek 生成语料 | DeepSeek API | 蝇脑领域语料（教师蒸馏） | 受其服务条款约束，不随仓库或附件分发 |
+
+连接组的引用（本项目使用的就是这一份）：
+
+> *Sexual dimorphism in the complete Drosophila male central nervous system*,
+> Cell, 2026-09-03；bioRxiv `10.1101/2025.10.09.680999`；PubMed 42691995。
 
 本项目与 Janelia、FlyWire、DeepSeek 均无隶属关系。使用教师模型生成语料需要你自己的
 API 密钥：`$env:DEEPSEEK_API_KEY = "sk-..."`（本仓库不含任何密钥）。
