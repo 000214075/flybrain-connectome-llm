@@ -37,6 +37,41 @@ SOURCES: dict[str, str] = {
     "ports-all": "checkpoints/ports_all/best.pt",
 }
 
+# Everything else worth keeping before the local checkpoints were deleted: the arms
+# behind the kernel, learning-rate, seed-variance and data-loader findings, plus the
+# hybrid transformer model (the only one here with usable language ability).
+EXTRA_SOURCES: dict[str, str] = {
+    "wiring-shuffled-step150": "checkpoints/flybrain-connectome-shuffled/best.pt",
+    "recipe-scaled": "checkpoints/flybrain-connectome-scaled/best.pt",
+    "recipe-scaled-2021": "checkpoints/flybrain-connectome-scaled-2021/best.pt",
+    "recipe-scaled-9000": "checkpoints/flybrain-connectome-scaled-9000/best.pt",
+    "recipe-sched800": "checkpoints/flybrain-connectome-sched800/best.pt",
+    "recipe-long2": "checkpoints/flybrain-connectome-long2/best.pt",
+    "kernel-csr": "checkpoints/flybrain-connectome-csr/best.pt",
+    "kernel-csr-full": "checkpoints/flybrain-connectome-csr-full/best.pt",
+    "kernel-csr-lr6e-05-804": "checkpoints/flybrain-connectome-csr-lr6e-05-804/best.pt",
+    "kernel-indexadd-492": "checkpoints/flybrain-connectome-indexadd-492/best.pt",
+    "lr-1e-04": "checkpoints/flybrain-connectome-lr/lr1e-04/best.pt",
+    "lr-2e-04": "checkpoints/flybrain-connectome-lr/lr2e-04/best.pt",
+    "lr-3e-05": "checkpoints/flybrain-connectome-lr/lr3e-05/best.pt",
+    "lr-6e-05": "checkpoints/flybrain-connectome-lr/lr6e-05/best.pt",
+    "lr-3e-05-800": "checkpoints/flybrain-connectome-lr3e-05-800/best.pt",
+    "seed-1337": "checkpoints/flybrain-connectome-variance/seed1337/best.pt",
+    "seed-2024": "checkpoints/flybrain-connectome-variance/seed2024/best.pt",
+    "seed-4242": "checkpoints/flybrain-connectome-variance/seed4242/best.pt",
+    "hybrid-transformer": "checkpoints/flybrain-full/best.pt",
+    "domain-domv2": "checkpoints/flybrain-domv2/best.pt",
+    "workers-eq0": "E:/flybrain-workers/eq0/best.pt",
+    "workers-eq2": "E:/flybrain-workers/eq2/best.pt",
+    "workers-eq2b": "E:/flybrain-workers/eq2b/best.pt",
+    "workers-nw0": "I:/flybrain-probe/nw0/best.pt",
+    "workers-nw2": "I:/flybrain-probe/nw2/best.pt",
+    "smoke-brain": "checkpoints/smoke-brain/best.pt",
+    "probe": "checkpoints/probe/best.pt",
+}
+
+SETS = {"release": SOURCES, "extra": EXTRA_SOURCES}
+
 KEEP = ("model", "model_config", "config", "step", "best_val")
 
 # The wiring itself lives in the state dict as four frozen arrays.  They are not
@@ -94,6 +129,7 @@ def inspect(path: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out-dir", required=True)
+    parser.add_argument("--set", choices=sorted(SETS), default="release", help="which source list to use")
     parser.add_argument("--only", nargs="*", default=None, help="subset of names to export")
     parser.add_argument("--force", action="store_true", help="re-export files that already exist")
     parser.add_argument(
@@ -105,11 +141,12 @@ def main() -> int:
 
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    sources = SETS[args.set]
     manifest_path = out_dir / "manifest.json"
     manifest = json.loads(manifest_path.read_text("utf-8")) if manifest_path.exists() else {}
 
-    for name in args.only or list(SOURCES):
-        src = Path(SOURCES[name])
+    for name in args.only or list(sources):
+        src = Path(sources[name])
         dst = out_dir / f"{name}.pt"
 
         if args.manifest_only:

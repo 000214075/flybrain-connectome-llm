@@ -516,10 +516,16 @@ $env:TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL = '1'
 剥离优化器**没有改变模型本身**：对发布用的 `canonical-rank512.pt` 重跑同一条固定 24 批
 命令，结果仍是 **3.4279 / 30.811**，与原始 `best.pt` 逐位一致。
 
-**度保持打乱接线的对照臂没有发布**，原因是它只跑到 150 步、而配对的真实接线臂（492 步）
-在 canonical 晋升时被覆盖，两者步数不同；放在一起会诱导出一个报告里明确排除掉的对比
-（同步数结论见 `reports/FINAL_REPORT.md` §7.6）。用
-`scripts/shuffle_wholebrain.py` 可以重建它。
+**度保持打乱接线的对照臂（step 150）在存档组里，但不要拿它跟别的臂横比**：它配对的
+真实接线臂（492 步）在 canonical 晋升时被覆盖，两者步数不同，放在一起会诱导出一个报告里
+明确排除掉的对比（同步数结论见 `reports/FINAL_REPORT.md` §7.6，第 50/100/150 步的差是
+0.0010 / 0.0012 / 0.0016）。用 `scripts/shuffle_wholebrain.py` 可以重建它。
+
+另有 [`v1.0-checkpoints-extra`](https://github.com/000214075/flybrain-connectome-llm/releases/tag/v1.0-checkpoints-extra)：
+把其余 **27 条实验臂**的权重一并存档（学习率、随机种子、扫描内核、数据加载、配方演化各组），
+约 17 GB。其中 `hybrid-transformer.pt` 是**全项目语言能力最好的模型**（固定 24 批
+ppl **10.42**），留作纯连接组模型的对照。那一组**不是**精选对照集——各臂步数与调度不同，
+**不要跨臂比 `best_val`**。每次训练的配置与指标曲线在 [`runs/`](runs/)，日志在 [`logs/`](logs/)。
 
 加载方式与仓库内检查点完全一致：
 
