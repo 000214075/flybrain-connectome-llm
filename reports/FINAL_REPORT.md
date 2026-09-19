@@ -4485,3 +4485,59 @@ rate 家族是越好越小（6.0897→0.2633 … 3.7962→0.1613）。⇒ **偏�
 4. **不要过度声称**：该文是**单作者预印本、未同行评审**、测的是**幼虫 2,825 神经元**、**冻结不学习**、**不报告任务损失**；
    它的"接线更重要"与本项目 §7.42 的"真实端口反而更差"**设置不同、不构成矛盾**，两边都不要互相引用成支持或反对。
 
+---
+
+## 7.45 冻结的"真实 vs 重连"路由测量（**零 GPU、零训练**）：粗略参与度几乎与接线无关；空间路由还需一次稀疏驱动（2026-09-19 20:2x–20:4x）
+
+**闸门 BUSY（只是那台空闲的 `flybrain.serve`）⇒ 本轮没有任何 GPU 任务**：四个探针全部在 **CPU** 上跑（每个 ~8 秒），
+**不写任何 checkpoint**（只在 `reports/` 写 KB 级 JSON）。本轮没起带 worker 的进程、没动别人的进程、没删东西。
+
+**(1) 前件核实：重连对照是有效的（新工具 `scripts/verify_shuffle_control.py`，**不靠产物自己的 meta**，直接从两个 npz 复算）**
+
+| 检查 | 结果 |
+|---|---|
+| 神经元数 / 边数 / `neuron_ids` / `sign` | 全部相同（逐元素 `array_equal`） |
+| **入度序列、出度序列** | **逐神经元完全相同** |
+| `pre` 未改动 / `post` 是原 `post` 的置换 | 都是 true |
+| 权重和 / **权重多重集** | 相同（`np.sort` 后 `allclose`） |
+| 自环 / 重边 | **0 / 0** |
+| **被改接的边占比** | **94.12%** |
+| 判定 | **valid control**（18 项检查全过） |
+
+构造脚本 `scripts/shuffle_wholebrain.py` 的 docstring 也写明"same neurons, same synapse count, same in-degree and out-degree for
+every cell, same sign per neuron, same normalised weights — only the partners are drawn at random"，且**度序列一变就拒绝写盘**。
+⇒ 本项目手里的这个对照**至少与 Therianos 那篇的"度与权重匹配"同等强**（在度上是逐点匹配），
+**文献 §7.15 提议的测量不需要再造任何产物**。
+
+**(2) 冻结测量（`scripts/probe_brain_information.py --levels`，新增 `--seed`；`configs/probe_routing_{rate,spike}_{real,shuffled}.json`
+只差 `brain_path` + `run_name`；**同一 seed 1337 ⇒ 接口权重逐位相同**，只有接线不同；驱动 = 同一批 8×32 个真实 token；
+**不训练、不读 checkpoint**）：
+
+| 体制 | 接线 | `state` | `drive` | `read_state` | `read_down` | `state_mean` |
+|---|---|---|---|---|---|---|
+| rate（`brain_spiking: false`） | **真实** | 6.6007 | 6.4957 | 6.5269 | 6.5910 | **0.441940** |
+| rate | **度匹配重连** | 6.1989 | 6.0070 | 6.0650 | 6.0483 | **0.441851** |
+| spike（`brain_spiking: true`） | **真实** | 6.5330 | 5.9064 | 6.1905 | 6.4014 | **0.365219** |
+| spike | **度匹配重连** | 6.4891 | 5.7973 | 6.1058 | 6.2757 | **0.364862** |
+
+（参与度的天花板 = `batch − 1` = 7；1.0 是"批内完全同向"的病理值。）
+
+**读出来的三件事**：
+1. **粗略动力学几乎与接线无关**：`state_mean` 在两种接线间只差 **8.9e−5（rate）/ 3.6e−4（spike）**；
+   参与度差 0.40–0.54（rate）/ 0.04–0.13（spike），相对天花板 7 是 **0.6–7.8%**，而且**没有一个量塌到 1**。
+   ⇒ 在**本项目的基底**上复现了 Therianos 那篇的**前半句**（gross response 由度/权统计决定）——而我们的对照恰好把度/权/符号都固定住了。
+2. **量级上的一个观察（不下结论）**：rate 体制下 real−shuffled 的参与度差（+0.40~+0.54）比 spike 体制（+0.04~+0.13）**大 ~4 倍**。
+3. `state_rows_identical` ≈ 0.9999/1.000：这个名字有歧义——它是"state 各行与第 0 行的**最大绝对差**"，
+   ≈1 表示**各行确实不同**（不是病理值）。不要按名字读成"完全相同"。
+
+**(3) 还缺的那一半：空间路由 + 稀疏驱动（本轮测的是全局有效维度，不是空间分布）。**
+Therianos 的判据是**空间**的（真实接线在**稀疏传入驱动**下把活动限制在核心 **1/5**，重连 2/3、随机图全部）。本项目做同一件事只需换三件东西：
+① **空间量**：被激活神经元占比 / 活动集中度（现成的 `neuron_responsive_fraction`、`brain.mean_activity`、`silent_fraction` 是同一族）；
+② **稀疏传入驱动**：只驱动一小部分输入——项目的端口掩码正好现成（`data/ports_sensory.npz` 只覆盖 **15,760/164,587 = 9.6%**）；
+③ 同一 seed、冻结、real vs shuffled 两遍。
+**成本参照本轮**：四遍一共 **34 秒 CPU、0 GPU、0 checkpoint** ⇒ 这条测量**随时能做，且完全不占卡**。
+
+**(4) 工具改动（小、可复查）**：`scripts/probe_brain_information.py` 新增 `--seed`（比较"只差接线"的两个配置时必须共享接口初始化，
+否则测到的是初始化差异）；并让 `drive`/`readout` 两个 stage 在**未运行**时输出 `null` 而不是崩
+（本轮在 CPU/未训练路径上就撞到 `_last_readout is None`）。这两处都是加性的，没有改变原有行为。
+

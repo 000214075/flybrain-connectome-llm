@@ -69,9 +69,16 @@
 ①被激活神经元占比、②`drive`/`readout` 参与度、③与随机图对比。**成本 = 几次前向，不需要训练、不需要 20 分钟预算。**
 **判据**：真实接线的激活占比显著低于重连版 ⇒ "刺激没标定"可能**主要是路由问题**（这会改写 S2 的方向）；
 两者接近 ⇒ 支持"幅度"那条诊断。与 S2 **不互斥**，但更便宜，**先做**。
-**重连版可能已经在手上**：`data/wholebrain_shuffled.npz`（142.2 MB）与 `data/wholebrain_shuffled_sorted.npz`（135.9 MB）
-⇒ 把 `brain_path` 指向它就能跑几次前向；**但先核它是否是"度与权重匹配"的重连**（Therianos 的对照是这样造的），
-若只是朴素置换则需另造度匹配版，否则对比被混杂。
+**重连版**：`data/wholebrain_shuffled.npz`（度/权/符号逐项匹配的重连）；**已复核有效**（报告 §7.45，
+`scripts/verify_shuffle_control.py` 18 项检查全过，94.12% 的边被改接、0 自环 0 重边）。
+**已跑的冻结测量（§7.45，CPU 34 秒、0 GPU、0 checkpoint）**：`configs/probe_routing_{rate,spike}_{real,shuffled}.json`
+四遍，同 seed ⇒ 接口权重逐位相同，只有接线不同。结果：**粗略量几乎与接线无关**——
+`state_mean` 差 8.9e−5（rate）/ 3.6e−4（spike），参与度差 0.40–0.54（rate）/ 0.04–0.13（spike，
+相对天花板 7 是 0.6–7.8%），**没有一个量塌到 1** ⇒ 复现了"gross 由统计决定"这一半。
+**还没做的那一半 = 空间路由 + 稀疏驱动**（Therianos 的判据是空间的：真实接线在稀疏驱动下把活动限制在核心 1/5）：
+换三件东西即可 —— ①空间量（`neuron_responsive_fraction`/`mean_activity`/`silent_fraction`）；
+②**稀疏驱动**（端口掩码现成：`data/ports_sensory.npz` 只覆盖 15,760/164,587 = 9.6%）；③同 seed、冻结、real vs shuffled。
+**成本同量级（秒级 CPU）**，不占卡；这条比 S2 的 `drive_scale` 扫描更该先做。
 
 **⚠️ 18:2x 只读实测（报告 §7.41）——三个必须先知道的事实**
 1. **`max_minutes: 20` 只够跑 450 步**（脉冲臂实测 2.6–2.8 s/步，比 rate 臂的 1.2 s/步慢 ~2.2×；前两个臂的 `done` 都写 `steps: 450`）

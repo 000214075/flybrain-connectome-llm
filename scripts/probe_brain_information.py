@@ -39,6 +39,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config", required=True)
     parser.add_argument("--checkpoint", default="")
     parser.add_argument("--device", default="cuda")
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help=(
+            "seed the model build. Needed when comparing two configs that differ only in "
+            "their wiring: without it the interfaces get different random weights and the "
+            "comparison measures the init, not the connectome."
+        ),
+    )
     parser.add_argument("--batch", type=int, default=8)
     parser.add_argument("--tokens", type=int, default=256)
     parser.add_argument("--data", default="data/tokenized_domain/val.bin")
@@ -97,19 +107,31 @@ def main() -> int:
             model(tokens)
         handle.remove()
         state = brain.last_state
+
+        def stage(vectors) -> float | None:
+            """Participation of one optional stage; None when that stage never ran.
+
+            `_last_drive` / `_last_readout` are only filled by the paths that use them,
+            so a forward that skips a stage (or a model built without training) leaves
+            them None -- report that instead of crashing on `.detach()`.
+            """
+            if vectors is None:
+                return None
+            return float(BrainPathway.participation_ratio(vectors.detach()))
+
         with torch.no_grad():
-            stages["drive"] = float(BrainPathway.participation_ratio(brain._last_drive.detach()))
+            stages["drive"] = stage(brain._last_drive)
             stages["read_state"] = float(
                 BrainPathway.participation_ratio(brain.read_state(state).detach())
             )
             stages["read_down"] = float(BrainPathway.participation_ratio(brain.read_down(state)))
-            stages["readout"] = float(BrainPathway.participation_ratio(brain._last_readout.detach()))
+            stages["readout"] = stage(brain._last_readout)
             stages["analog_weight"] = float(brain.analog_read)
             stages["state_mean"] = float(state.mean())
             stages["state_rows_identical"] = float((state - state[0:1]).abs().max())
         print(f"batch {args.batch}, tokens {args.tokens}")
         for name, value in stages.items():
-            print(f"  {name:22s} {value:.3f}", flush=True)
+            print(f"  {name:22s} {'-' if value is None else f'{value:.3f}'}", flush=True)
         if args.out:
             with open(args.out, "w", encoding="utf-8") as fh:
                 json.dump({"batch": args.batch, **stages}, fh, indent=2, ensure_ascii=False)

@@ -1,0 +1,11 @@
+{
+  "batch": 8,
+  "state": 6.198902606964111,
+  "drive": 6.007025718688965,
+  "read_state": 6.064967632293701,
+  "read_down": 6.04826545715332,
+  "readout": null,
+  "analog_weight": 0.3132616877555847,
+  "state_mean": 0.44185131788253784,
+  "state_rows_identical": 0.99982750415802
+}
