@@ -1,0 +1,11 @@
+{
+  "checkpoint": "I:\\flybrain-release\\canonical-rank512.pt",
+  "checkpoint_step": 17400,
+  "tokens": "data/tokenized_domain/val.bin",
+  "context": 32,
+  "batches": 24,
+  "batch": 8,
+  "val_loss": 3.4279,
+  "val_ppl": 30.811,
+  "seconds": 5.0
+}

@@ -502,8 +502,24 @@ $env:TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL = '1'
 发布用的权重**只保留模型本体与元数据**（`model` / `model_config` / `config` /
 `step` / `best_val` 五个键），体积约为原来的 40%。它们**不能用于断点续训**。
 
-权重要作为 **GitHub Release 附件**发布（单个 0.35–1.9 GB），不随 git 仓库分发。
-每个文件旁边有 `manifest.json`，记录来源运行、步数、验证损失、参数量与 SHA256。
+权重发布在 [`Releases`](https://github.com/000214075/flybrain-connectome-llm/releases/latest)
+（v1.0，14 个文件，合计约 10 GB），不随 git 仓库分发。附件 `manifest.json` 记录每个文件的
+来源运行、步数、参数量、验证损失与 SHA256。三组权重各自**同步数、可直接横比**：
+
+| 组 | 文件 | step | 固定 24 批 val_loss / ppl |
+|---|---|---|---|
+| 交付模型 | `canonical-rank512.pt`（186,168,794 参数） | 17400 | **3.4279 / 30.811** |
+| 读出秩扫描 | `rank128/256/512/1024.pt` | 600 | 5.8264 / 5.3059 / 4.8979 / **4.5997** |
+| 生物电刺激五臂 | `biospike-{nomask,inonly,outonly,random,sensory}.pt` | 450 | 4.9549 / 5.4531 / 6.2474 / 6.7510 / 7.2254 |
+| 端口掩码对照 | `ports-{all,random-sensory,sensory,output}.pt` | 500 | 5.3785 / 5.5953 / 5.6194 / 6.3483 |
+
+剥离优化器**没有改变模型本身**：对发布用的 `canonical-rank512.pt` 重跑同一条固定 24 批
+命令，结果仍是 **3.4279 / 30.811**，与原始 `best.pt` 逐位一致。
+
+**度保持打乱接线的对照臂没有发布**，原因是它只跑到 150 步、而配对的真实接线臂（492 步）
+在 canonical 晋升时被覆盖，两者步数不同；放在一起会诱导出一个报告里明确排除掉的对比
+（同步数结论见 `reports/FINAL_REPORT.md` §7.6）。用
+`scripts/shuffle_wholebrain.py` 可以重建它。
 
 加载方式与仓库内检查点完全一致：
 

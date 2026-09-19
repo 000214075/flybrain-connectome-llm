@@ -31,7 +31,6 @@ SOURCES: dict[str, str] = {
     "biospike-random": "checkpoints/bio-screening/biospike-random/best.pt",
     "biospike-inonly": "checkpoints/bio-screening/biospike-inonly/best.pt",
     "biospike-outonly": "checkpoints/bio-screening/biospike-outonly/best.pt",
-    "wiring-shuffled": "checkpoints/flybrain-connectome-shuffled/best.pt",
     "ports-sensory": "checkpoints/ports_sensory/best.pt",
     "ports-random-sensory": "checkpoints/ports_random_sensory/best.pt",
     "ports-output": "checkpoints/ports_output/best.pt",
@@ -39,6 +38,33 @@ SOURCES: dict[str, str] = {
 }
 
 KEEP = ("model", "model_config", "config", "step", "best_val")
+
+# The wiring itself lives in the state dict as four frozen arrays.  They are not
+# parameters (they are absent from named_parameters() and from the optimiser), and at
+# 76,853,875 elements they are large enough that lumping them in would overstate the
+# model by ~40%.
+FROZEN = (
+    "brain.circuit.pre",
+    "brain.circuit.post",
+    "brain.circuit.weight",
+    "brain.circuit.sign",
+)
+
+
+def count_elements(model: dict) -> tuple[int, int, int]:
+    """Return (parameters, frozen_connectome_elements, total) for a model state dict."""
+    sizes = {name: int(t.numel()) for name, t in model.items() if torch.is_tensor(t)}
+    frozen = sum(size for name, size in sizes.items() if name in FROZEN)
+    total = sum(sizes.values())
+    return total - frozen, frozen, total
+
+# Deliberately not published: the degree-preserving rewiring control
+# (checkpoints/flybrain-connectome-shuffled) stopped at step 150, and its matched
+# real-wiring partner at step 492 was overwritten when the canonical checkpoint was
+# promoted into the same directory.  The two files are not step-matched, so shipping
+# them together would invite a comparison that the report explicitly rules out
+# (reports/FINAL_REPORT.md section 7.6).  Rebuild the control from
+# configs/train_connectome_shuffled.json instead.
 
 
 def sha256(path: Path) -> str:
@@ -49,11 +75,32 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def inspect(path: Path) -> dict:
+    """Read one exported (or source) checkpoint and describe it."""
+    blob = torch.load(path, map_location="cpu", mmap=True, weights_only=False)
+    missing = [key for key in KEEP if key not in blob]
+    if missing:
+        raise KeyError(f"{path} lacks {missing}")
+    params, frozen, total = count_elements(blob["model"])
+    return {
+        "step": int(blob["step"]),
+        "best_val": float(blob["best_val"]),
+        "parameters": params,
+        "frozen_connectome_elements": frozen,
+        "model_state_elements": total,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--only", nargs="*", default=None, help="subset of names to export")
     parser.add_argument("--force", action="store_true", help="re-export files that already exist")
+    parser.add_argument(
+        "--manifest-only",
+        action="store_true",
+        help="do not copy weights; just rewrite manifest.json from the files already there",
+    )
     args = parser.parse_args()
 
     out_dir = Path(args.out_dir)
@@ -64,6 +111,17 @@ def main() -> int:
     for name in args.only or list(SOURCES):
         src = Path(SOURCES[name])
         dst = out_dir / f"{name}.pt"
+
+        if args.manifest_only:
+            if not dst.exists():
+                print(f"[skip] {name}: not exported yet", flush=True)
+                continue
+            manifest[name] = {"source": src.as_posix(), **inspect(dst), "bytes": dst.stat().st_size,
+                              "sha256": sha256(dst)}
+            manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), "utf-8")
+            print(f"[ok]   {name}: {manifest[name]['parameters']:,} parameters", flush=True)
+            continue
+
         if not src.exists():
             print(f"[skip] {name}: source missing ({src})", flush=True)
             continue
@@ -79,7 +137,7 @@ def main() -> int:
 
         payload = {key: blob[key] for key in KEEP}
         step, best_val = int(payload["step"]), float(payload["best_val"])
-        n_params = sum(int(t.numel()) for t in payload["model"].values() if torch.is_tensor(t))
+        params, frozen, total = count_elements(payload["model"])
         del blob
 
         torch.save(payload, dst)
@@ -90,14 +148,16 @@ def main() -> int:
             "source": src.as_posix(),
             "step": step,
             "best_val": best_val,
-            "params": n_params,
+            "parameters": params,
+            "frozen_connectome_elements": frozen,
+            "model_state_elements": total,
             "bytes": size,
             "sha256": sha256(dst),
         }
         manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False), "utf-8")
         print(
             f"[ok]   {name}: step {step} best_val {best_val:.4f} "
-            f"params {n_params:,} {size / 2**30:.2f} GiB -> {dst}",
+            f"params {params:,} (+{frozen:,} frozen) {size / 2**30:.2f} GiB -> {dst}",
             flush=True,
         )
 
